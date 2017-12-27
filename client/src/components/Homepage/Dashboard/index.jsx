@@ -6,6 +6,7 @@ import WillApply from '../../../containers/willApplyContainer';
 import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
+import Manual from '../Manual';
 import './dashboard.css';
 
 class Home extends React.Component {
@@ -67,6 +68,7 @@ class Home extends React.Component {
               <Route path="/home/will-apply" render={() => <WillApply />} />
               <Route path="/home/applied" render={() => <Applied />} />
               <Route path="/home/follow-up" render={() => <FollowUp />} />
+              <Route path="/home/enter-job" render={() => <Manual />} />
             </Switch>
           </div>
         </div>

@@ -28,13 +28,13 @@ class Navigation extends React.Component {
             Search
           </li>
           <li>
-            Enter A Job
+            <Link to="/home/enter-job" href="/home/enter-job">Enter Job</Link>
           </li>
           <li>
-              <Link to="/login" href="/login">Login</Link>
+            <Link to="/login" href="/login">Login</Link>
           </li>
           <li>
-              <Link to="/signup" href="/signup">Sign Up</Link>
+            <Link to="/signup" href="/signup">Sign Up</Link>
           </li>
         </ul>
       </div>
