@@ -6,6 +6,7 @@ import WillApply from '../../../containers/willApplyContainer';
 import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
+import './dashboard.css';
 
 class Home extends React.Component {
   constructor(props) {
@@ -31,11 +32,11 @@ class Home extends React.Component {
               <div className="row no-gutters">
                 <div className="col-md-3">
                   <button
-                    className="btn btn-secondary"
                     id="menu-toggle"
+                    className="btn btn-secondary"
                     onClick={this.toggleClass}
                   >
-                  Toggle Menu
+                  <i id="toggler" className={this.state.active ? 'fa fa-chevron-left' : 'fa fa-chevron-right'} aria-hidden="true"></i>
                   </button>
                 </div>
                 <div className="offset-md-2 col-md-7">
