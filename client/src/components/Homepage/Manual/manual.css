@@ -24,3 +24,15 @@
 .search-input{
   padding-left:10px;
 }
+
+.must-have {
+  color: red;
+}
+
+.star {
+  color: yellow;
+}
+
+#jobRankingSelect {
+  padding-bottom: 5px;
+}

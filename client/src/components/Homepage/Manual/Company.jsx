@@ -6,15 +6,14 @@ const company = (props) => {
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label>Name</label>
+            <label>Name</label><span className="must-have">*</span>
             <input
               type="text"
               className="form-control"
               id="companyNameInput"
               placeholder="Name"
-              name="companyName"
-              value={props.company.name}
-              onChange={props.handleUserInput}
+              value={props.company['name']}
+              onChange={props.companyInputChange.bind(this, 'name')}
             />
           </div>
         </div>
@@ -26,9 +25,8 @@ const company = (props) => {
               className="form-control"
               id="companyPhoneInput"
               placeholder="Phone Number"
-              name="companyPhone"
-              value={props.company.phone}
-              onChange={props.handleUserInput}
+              value={props.company['phone']}
+              onChange={props.companyInputChange.bind(this, 'phone')}
             />
           </div>
         </div>
@@ -40,9 +38,8 @@ const company = (props) => {
           className="form-control"
           id="companyAddress1Input"
           placeholder="Address 1"
-          name="companyAddress1"
-          value={props.company.address1}
-          onChange={props.handleUserInput}
+          value={props.company['address1']}
+          onChange={props.companyInputChange.bind(this, 'address1')}
         />
       </div>
       <div className="form-group">
@@ -52,9 +49,8 @@ const company = (props) => {
           className="form-control"
           id="companyAddress2Input"
           placeholder="Address 2"
-          name="companyAddress2"
-          value={props.company.address2}
-          onChange={props.handleUserInput}
+          value={props.company['address2']}
+          onChange={props.companyInputChange.bind(this, 'address2')}
         />
       </div>
       <div className="row">
@@ -66,9 +62,8 @@ const company = (props) => {
               className="form-control"
               id="companyCityInput"
               placeholder="City"
-              name="companyCity"
-              value={props.company.city}
-              onChange={props.handleUserInput}
+              value={props.company['city']}
+              onChange={props.companyInputChange.bind(this, 'city')}
             />
           </div>
         </div>
@@ -78,8 +73,7 @@ const company = (props) => {
             <select
               className="form-control"
               id="companyStateSelect"
-              name="companyState"
-              onChange={props.handleUserInput}
+              onChange={props.companyInputChange.bind(this, 'state')}
             >
               <option value="Alabama">Alabama</option>
               <option value="Alaska">Alaska</option>
@@ -142,9 +136,8 @@ const company = (props) => {
               className="form-control"
               id="companyZipInput"
               placeholder="ZIP Code"
-              name="companyZip"
-              value={props.company.zip}
-              onChange={props.handleUserInput}
+              value={props.company['zip']}
+              onChange={props.companyInputChange.bind(this, 'zip')}
             />
           </div>
         </div>
@@ -156,9 +149,8 @@ const company = (props) => {
           id="notesInput"
           rows="3"
           placeholder="Company description"
-          name="companyDescription"
-          value={props.company.description}
-          onChange={props.handleUserInput}
+          value={props.company['description']}
+          onChange={props.companyInputChange.bind(this, 'description')}
         />
       </div>
     </div>

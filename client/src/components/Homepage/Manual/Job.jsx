@@ -7,15 +7,14 @@ const job = (props) => {
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label>Title</label>
+            <label>Title</label><span className="must-have">*</span>
             <input
               type="text"
               className="form-control"
               id="jobTitleInput"
               placeholder="Title"
-              name="title"
-              value={props.job.title}
-              onChange={props.handleUserInput}
+              value={props.job['title']}
+              onChange={props.jobInputChange.bind(this, 'title')}
             />
           </div>
         </div>
@@ -26,7 +25,7 @@ const job = (props) => {
               className="form-control"
               id="jobDeadlineSelect"
               selected={props.job.deadline}
-              onChange={props.handleChange}
+              onChange={props.dateChange}
               dateFormat="LL"
             />
           </div>
@@ -35,12 +34,11 @@ const job = (props) => {
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label>Current Status</label>
+            <label>Current Status</label><span className="must-have">*</span>
             <select
               className="form-control"
               id="jobStatusSelect"
-              name="status"
-              onChange={props.handleUserInput}
+              onChange={props.jobInputChange.bind(this, 'status')}
             >
               <option value="Will Apply">Will Apply</option>
               <option value="Applied">Applied</option>
@@ -54,14 +52,13 @@ const job = (props) => {
             <select
               className="form-control"
               id="jobRankingSelect"
-              name="ranking"
-              onChange={props.handleUserInput}
+              onChange={props.jobInputChange.bind(this, 'ranking')}
             >
-              <option value="5">☆☆☆☆☆</option>
-              <option value="4">☆☆☆☆</option>
-              <option value="3">☆☆☆</option>
-              <option value="2">☆☆</option>
-              <option value="1">☆</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="1">⭐</option>
             </select>
           </div>
         </div>
@@ -73,9 +70,8 @@ const job = (props) => {
           id="descriptionInput"
           rows="3"
           placeholder="Job description"
-          name="description"
-          value={props.job.description}
-          onChange={props.handleUserInput}
+          value={props.job['description']}
+          onChange={props.jobInputChange.bind(this, 'description')}
         />
       </div>
       <div className="row">
@@ -87,9 +83,8 @@ const job = (props) => {
               className="form-control"
               id="jobSourceInput"
               placeholder="Where did you hear about this job?"
-              name="source"
-              value={props.job.source}
-              onChange={props.handleUserInput}
+              value={props.job['source']}
+              onChange={props.jobInputChange.bind(this, 'source')}
             />
           </div>
         </div>
@@ -101,9 +96,8 @@ const job = (props) => {
               className="form-control"
               id="jobLinkInput"
               placeholder="URL"
-              name="link"
-              value={props.job.link}
-              onChange={props.handleUserInput}
+              value={props.job['link']}
+              onChange={props.jobInputChange.bind(this, 'link')}
             />
           </div>
         </div>
@@ -115,9 +109,8 @@ const job = (props) => {
           id="notesInput"
           rows="3"
           placeholder="Notes for this job"
-          name="notes"
-          value={props.job.notes}
-          onChange={props.handleUserInput}
+          value={props.job['notes']}
+          onChange={props.jobInputChange.bind(this, 'notes')}
         />
       </div>
     </div>

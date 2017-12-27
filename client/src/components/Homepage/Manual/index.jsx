@@ -33,27 +33,45 @@ class Manual extends Component {
       },
     };
 
-    this.handleUserInput = this.handleUserInput.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.jobInputChange = this.jobInputChange.bind(this);
+    this.companyInputChange = this.companyInputChange.bind(this);
+    this.dateChange = this.dateChange.bind(this);
     this.linkChecker = this.linkChecker.bind(this); 
     this.removeModal = this.removeModal.bind(this);
     this.jobFormSubmit = this.jobFormSubmit.bind(this);
   }
 
-  handleUserInput(e) {
-    const name = e.target.name;
+  jobInputChange(key, e) {
+    const oldJob = this.state['job'];
+    const newJob = this.state['job'];
     const value = e.target.value;
+    newJob[key] = value;
 
     this.setState({
-      [name]: value,
+      oldJob: newJob,
     });
 
-    console.log(this.state);
+    console.log(this.state.job);
   }
 
-  handleChange(date) {
+  companyInputChange(key, e) {
+    const oldCompany = this.state['company'];
+    const newCompany = this.state['company'];
+    const value = e.target.value;
+    newCompany[key] = value;
+
     this.setState({
-      jobDeadline: date,
+      oldCompany: newCompany,
+    });
+
+    console.log(this.state.company);
+  }
+
+  dateChange(date) {
+    const job = {...this.state.job};
+    job.deadline = date;
+    this.setState({
+      job,
     });
   }
 
@@ -98,8 +116,8 @@ class Manual extends Component {
                   <div className="card-block">
                     <Job
                       job={this.state.job}
-                      handleUserInput={this.handleUserInput}
-                      handleChange={this.handleChange}
+                      jobInputChange={this.jobInputChange}
+                      dateChange={this.dateChange}
                     />
                   </div>
                 </div>
@@ -121,7 +139,7 @@ class Manual extends Component {
                   <div className="card-block">
                     <Company
                       company={this.state.company}
-                      handleUserInput={this.handleUserInput}
+                      companyInputChange={this.companyInputChange}
                     />
                   </div>
                 </div>
@@ -142,13 +160,14 @@ class Manual extends Component {
               </small>
             </div>
             <button
-              type="Submit"
+              type="button"
               className="btn btn-job-form"
               data-toggle="modal"
-              data-target="#myModal"
+              data-target="#submitModal"
+              onClick={this.jobFormSubmit}
             >Submit
             </button>
-            <div className="modal fade" id="myModal" role="dialog">
+            <div className="modal fade" id="submitModal" role="dialog">
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
@@ -159,7 +178,7 @@ class Manual extends Component {
                     <p>Successfully Added Job Lead!</p>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/enter-a-job" href="/enter-a-job" className="btn btn-secondary" onClick={this.removeModal}>
+                    <Link to="/home/enter-job" href="/home/enter-job" className="btn btn-secondary" data-dismiss="modal">
                       Add Another Job Lead
                     </Link>
                     <Link to="/home" href="/home" className="btn btn-job-form" onClick={this.removeModal}>
