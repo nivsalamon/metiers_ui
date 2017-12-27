@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import Navigation from '../../Navigation/Navigation';
+import { Switch, Route, Link } from 'react-router-dom';
+import WillApply from '../../../containers/willApplyContainer';
+import Applied from '../../../containers/appliedContainer';
+import FollowUp from '../../../containers/followUpContainer';
+import dashboardContainer from '../../../containers/dashboardContainer';
 
 class Home extends React.Component {
   constructor(props) {
@@ -38,23 +43,30 @@ class Home extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="row push-bottom">
+            <div className="container push-bottom">
+            <div className="row">
               <div className="col-md-4">
                 <div className="job-tab">
-                  <h1>Will Apply</h1>
+                  <Link to="/home/will-apply" href="/home/will-apply">Will Apply</Link>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="job-tab">
-                  <h1>Applied</h1>
+                  <Link to="/home/applied" href="/home/applied">Applied</Link>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="job-tab">
-                  <h1>Follow-Up</h1>
+                  <Link to="/home/follow-up" href="/home/follow-up">Follow-Up</Link>
                 </div>
+              </div>
               </div>
             </div>
+            <Switch>
+              <Route path="/home/will-apply" render={() => <WillApply />} />
+              <Route path="/home/applied" render={() => <Applied />} />
+              <Route path="/home/follow-up" render={() => <FollowUp />} />
+            </Switch>
           </div>
         </div>
       </div>
