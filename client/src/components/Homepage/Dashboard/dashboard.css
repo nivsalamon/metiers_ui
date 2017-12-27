@@ -1,0 +1,151 @@
+.push-top {
+  margin-top:50px;
+}
+
+.push-top-sm{
+  margin-top:25px;
+}
+
+.push-bottom {
+  margin-bottom:50px;
+}
+
+.push-bottom-sm{
+  margin-bottom:25px;
+}
+
+.card-wrapper {
+  min-width:100px;
+  border:1px solid #bbb;
+  border-radius:2px;
+  margin-bottom:20px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.job-tab{
+  text-align:center;
+}
+
+.card-inner {
+  padding-top: 15px;
+  overflow: auto;
+}
+
+.job_company, .job_title, .original_job_url, .personal_rating, .job_status, .job_deadline {
+  margin-left:25px;
+}
+
+.job_company {
+  font-family: 'Open Sans', sans-serif;
+  font-weight:bold;
+  margin-right: 5px;
+  font-size:20px;
+}
+
+.job_title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;  
+  margin-bottom:0px; 
+}
+
+.last_applied {
+  border-top:1px solid #bbb;
+  width:100%;
+}
+
+.last_applied_text {
+  padding: 11px 15px 16px 15px;
+  font-style: italic;
+  font-size:13px;
+  margin-bottom:0px;
+  background-color:#090068;
+  color:#fff;
+}
+
+.original_job_url, .personal_rating, .job_status, .job_deadline {
+  font-family: 'Open Sans', sans-serif;
+  font-size:14px;
+}
+
+.personal_rating, .job_status, job_deadline{
+  margin-bottom:0px;
+}
+
+.job_status {
+  margin-bottom: 10px;
+}
+
+.original_job_url:hover {
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.left-align{
+  text-align:left;
+}
+
+.job-detail-sections{
+  border: 2px solid #bbb;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.15);
+  padding:20px;
+}
+
+.fa-stack{
+  font-size:14px;
+}
+
+.job-details-headers {
+  margin: 15px 0px 0px 10px;
+}
+
+.push-left-sm {
+  margin-left: 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.job-tab-detail > a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+}
+
+.job-tab > a {
+  text-decoration: none;
+  color: #000;
+  font-size: 30px;
+}
+
+.job-tab > a:hover {
+  color: #1404be;
+}
+
+.selected{
+  color: #0328e6 !important;
+}
+
+.btn-secondary {
+  margin-left: 10px;
+  border-color: transparent;
+}
+
+#menu-toggle:hover, #menu-toggle:focus, #menu-toggle:active  {
+  border: none;
+  background-color:transparent !important;
+  cursor:pointer;
+}
+
+.btn-secondary.focus, .btn-secondary:focus {
+    -webkit-box-shadow: none;
+     box-shadow: none; 
+  }
+
+.search-input {
+  padding-left: 10px;
+}
+
+#toggler{
+  font-size:25px;
+}
