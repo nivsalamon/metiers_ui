@@ -20,6 +20,7 @@ class Manual extends Component {
         ranking: '5',
         deadline: moment(),
         link: '',
+        createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
       },
       company: {
         name: '',
@@ -90,8 +91,6 @@ class Manual extends Component {
   }
 
   jobFormSubmit(e) {
-    console.log('I will submit form later');
-
     axios.post('http://localhost:3003/manual', {
       job: this.state.job,
       company: this.state.company,
