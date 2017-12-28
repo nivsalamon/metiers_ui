@@ -90,7 +90,14 @@ class Manual extends Component {
   }
 
   jobFormSubmit(e) {
-    console.log('I will submit form later')
+    console.log('I will submit form later');
+
+    axios.post('http://localhost:3003/manual', {
+      job: this.state.job,
+      company: this.state.company,
+    }).then((res) => {
+      console.log('Successfully post to DB', res);
+    })
   }
 
   render() {
