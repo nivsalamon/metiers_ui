@@ -10,8 +10,16 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        Login Page
+      <div className="container">
+        <div className="row justify-content-md-center">
+          <div className="col-md-5">
+            <label>Login</label>
+            <input placeholder="Login" className="form-control"/>
+            <label>Password</label>
+            <input placeholder="Password" className="form-control" type="password"/>
+            <button className="btn btn-primary push-top-sm-xs">Login</button>
+          </div>
+        </div>
       </div>
     );
   }
