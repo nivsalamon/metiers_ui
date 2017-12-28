@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Navigation from '../../Navigation/Navigation';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, NavLink } from 'react-router-dom';
 import WillApply from '../../../containers/willApplyContainer';
 import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
@@ -16,6 +16,21 @@ class Home extends React.Component {
     this.state = {
       active: false,
     };
+  }
+
+  componentWillMount() {
+    // auth.refresh();
+    var context = this;
+    axios.get(`http://localhost:3003/dashboard`)
+      .then((res) => {
+        console.log('this is res.data', res.data)
+        if (res.data.length === 0) {
+          context.props.dashboardAction([]);
+        } else {
+          context.props.dashboardAction(res.data);
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   toggleClass() {
@@ -49,17 +64,17 @@ class Home extends React.Component {
             <div className="row">
               <div className="col-md-4">
                 <div className="job-tab">
-                  <Link to="/home/will-apply" href="/home/will-apply">Will Apply</Link>
+                  <NavLink to="/home/will-apply" activeClassName="selected" href="/home/will-apply">Will Apply</NavLink>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="job-tab">
-                  <Link to="/home/applied" href="/home/applied">Applied</Link>
+                  <NavLink to="/home/applied" activeClassName="selected" href="/home/applied">Applied</NavLink>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="job-tab">
-                  <Link to="/home/follow-up" href="/home/follow-up">Follow-Up</Link>
+                  <NavLink to="/home/follow-up" activeClassName="selected" href="/home/follow-up">Follow-Up</NavLink>
                 </div>
               </div>
               </div>
