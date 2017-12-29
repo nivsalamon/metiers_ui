@@ -22,6 +22,7 @@ class Signup extends React.Component {
             <label>Password</label>
             <input placeholder="Password" className="form-control" type="password"/>
             <button className="btn btn-primary push-top-sm-xs">Sign Up</button>
+            <Link to="/login" href="/login" className="btn btn-info push-top-sm-xs push-left-sm">Login</Link>
           </div>
         </div>
       </div>
