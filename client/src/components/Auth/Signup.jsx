@@ -13,7 +13,6 @@ class Signup extends React.Component {
         signedup: false
     }
     this.handleChange = this.handleChange.bind(this);
-    this.signUpSubmit = this.signUpSubmit.bind(this);
   }
 
   handleChange(e) {
