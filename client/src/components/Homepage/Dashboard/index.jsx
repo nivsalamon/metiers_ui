@@ -7,6 +7,9 @@ import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
 import Manual from '../Manual';
+import { logout } from '../../../actions/authActions';
+import PropTypes from 'prop-types';
+import { connect } from 'redux';
 import './dashboard.css';
 
 class Home extends React.Component {
@@ -21,16 +24,16 @@ class Home extends React.Component {
   componentWillMount() {
     // auth.refresh();
     var context = this;
-    axios.get(`http://localhost:3003/dashboard`)
-      .then((res) => {
-        console.log('this is res.data', res.data)
-        if (res.data.length === 0) {
-          context.props.dashboardAction([]);
-        } else {
-          context.props.dashboardAction(res.data);
-        }
-      })
-      .catch(err => console.log(err));
+    // axios.get(`http://localhost:3003/dashboard`)
+    //   .then((res) => {
+    //     console.log('this is res.data', res.data)
+    //     if (res.data.length === 0) {
+    //       context.props.dashboardAction([]);
+    //     } else {
+    //       context.props.dashboardAction(res.data);
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
   }
 
   toggleClass() {
@@ -38,7 +41,14 @@ class Home extends React.Component {
     this.setState({ active: !currentState });
   }
 
+  logoutHandler(e){
+    e.preventDefault();
+    this.props.logout();
+    console.log('HELLOOOOOOO TRYING TO LOGOUT HERE')
+  }
+
   render() {
+
     return (
       <div>
         <div id="wrapper" className={this.state.active ? 'toggled' : 'notToggled'}>
@@ -55,8 +65,11 @@ class Home extends React.Component {
                   <i id="toggler" className={this.state.active ? 'fa fa-chevron-left' : 'fa fa-chevron-right'} aria-hidden="true"></i>
                   </button>
                 </div>
-                <div className="offset-md-2 col-md-7">
+                <div className="offset-md-2 col-md-6">
                   <h3>Your Name</h3>
+                </div>
+                <div className="col-md-1">
+                  <a href="#" onClick={this.logoutHandler.bind(this)}>Logout</a>
                 </div>
               </div>
             </div>
@@ -91,5 +104,5 @@ class Home extends React.Component {
     );
   }
 }
-
+// export default connect(mapStateToProps, { logout })(Home);
 export default Home;

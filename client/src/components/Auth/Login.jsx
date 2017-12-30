@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../../actions/authActions';
 
 class Login extends React.Component {
   constructor() {
@@ -19,22 +22,31 @@ class Login extends React.Component {
   }
 
 
+  // loginSubmit(e) {
+  //   e.preventDefault();
+  //   this.props.login(this.state).then((res) => {
+  //     console.log('inside component res next')
+  //     console.log(res)
+  //     if(localStorage.getItem('jwtToken') === '' || localStorage.getItem('jwtToken') === undefined){
+  //       this.setState({errors: true});
+  //     } else {
+  //       this.setState({loginSuccess: true});
+  //     }
+  //   });
+
+
   loginSubmit(e) {
     e.preventDefault();
-    axios.post('http://localhost:3003/login', {
-      email: this.state.email,
-      password: this.state.password,
-    }).then((res) => {
-      console.log('res FE', res);
+    this.props.login(this.state).then((res) => {
+      console.log('res in comp')
+      console.log(res)
       if(res.status === 200){
         console.log(res.data.token);
         this.setState({loginSuccess: true});
-      } 
-    }).catch(err => {
-      if(err.response.status === 401) {
+      } else if(res.response.status === 401) {
         this.setState({errors: true});
       }
-    })
+    });
   }
 
   render() {
@@ -46,10 +58,12 @@ class Login extends React.Component {
       <div className="container">
         <div className="row justify-content-md-center">
           <div className="col-md-5">
-            <label className="push-top-sm-xs">Login</label>
-            <input placeholder="Email" className="form-control" name="email" onChange={this.handleChange.bind(this)}/>
-            <label className="push-top-sm-xs">Password</label>
-            <input placeholder="Password" className="form-control" type="password" name="password" onChange={this.handleChange.bind(this)}/>
+            <form>
+              <label className="push-top-sm-xs">Login</label>
+              <input placeholder="Email" className="form-control" name="email" onChange={this.handleChange.bind(this)}/>
+              <label className="push-top-sm-xs">Password</label>
+              <input placeholder="Password" className="form-control" type="password" name="password" onChange={this.handleChange.bind(this)}/>
+            </form>
              { this.state.errors && <div className="alert alert-danger push-top-sm">Invalid Credentials.</div> }
             <button className="btn btn-primary push-top-sm-xs" onClick={this.loginSubmit}>Login</button>
             <Link to="/signup" href="/signup" className="btn btn-info push-top-sm-xs push-left-sm">Sign Up</Link>
@@ -59,4 +73,5 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+
+export default connect(null, { login })(Login);
