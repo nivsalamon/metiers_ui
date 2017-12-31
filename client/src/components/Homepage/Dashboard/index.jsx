@@ -1,21 +1,59 @@
 import React from 'react';
 import axios from 'axios';
 import Navigation from '../../Navigation/Navigation';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, NavLink, Redirect } from 'react-router-dom';
 import WillApply from '../../../containers/willApplyContainer';
 import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
+import Cards from '../../../containers/cardsContainer';
 import Manual from '../Manual';
+import { logout } from '../../../actions/authActions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './dashboard.css';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleClass = this.toggleClass.bind(this);
     this.state = {
       active: false,
+      logout: false,
     };
+    this.toggleClass = this.toggleClass.bind(this);
+    this.capitalize = this.capitalize.bind(this);
+  } 
+
+  componentWillMount() {
+    // auth.refresh();
+    var context = this;
+    axios.post(`http://localhost:3003/dashboard`, {
+      id: this.props.auth.user.id,
+    }).then((res) => {
+        console.log('this is res.data', res.data)
+        if (res.data.length === 0) {
+          context.props.dashboardAction([]);
+        } else {
+          context.props.dashboardAction(res.data);
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
+  componentDidMount() {
+    // auth.refresh();
+    var context = this;
+    axios.post(`http://localhost:3003/dashboard`, {
+      id: this.props.auth.user.id,
+    }).then((res) => {
+        console.log('this is res.datasdasdasda', res.data)
+        if (res.data.length === 0) {
+          context.props.dashboardAction([]);
+        } else {
+          context.props.dashboardAction(res.data);
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   toggleClass() {
@@ -23,8 +61,23 @@ class Home extends React.Component {
     this.setState({ active: !currentState });
   }
 
+  logoutHandler(e){
+    e.preventDefault();
+    this.props.logout();
+    this.setState({logout: true});
+  }
+
+  capitalize(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   render() {
-    return (
+
+    if(this.state.logout){
+      return <Redirect to="/login" />
+    }
+
+    return (      
       <div>
         <div id="wrapper" className={this.state.active ? 'toggled' : 'notToggled'}>
           <Navigation />
@@ -40,8 +93,11 @@ class Home extends React.Component {
                   <i id="toggler" className={this.state.active ? 'fa fa-chevron-left' : 'fa fa-chevron-right'} aria-hidden="true"></i>
                   </button>
                 </div>
-                <div className="offset-md-2 col-md-7">
-                  <h3>Your Name</h3>
+                <div className="offset-md-2 col-md-6">
+                  <h3>{this.capitalize(this.props.auth.user.firstName)} {this.capitalize(this.props.auth.user.lastName)}</h3>
+                </div>
+                <div className="col-md-1">
+                  <a href="#" onClick={this.logoutHandler.bind(this)}>Logout</a>
                 </div>
               </div>
             </div>
@@ -49,17 +105,17 @@ class Home extends React.Component {
             <div className="row">
               <div className="col-md-4">
                 <div className="job-tab">
-                  <Link to="/home/will-apply" href="/home/will-apply">Will Apply</Link>
+                  <NavLink to="/home/will-apply" activeClassName="selected" href="/home/will-apply">Will Apply</NavLink>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="job-tab">
-                  <Link to="/home/applied" href="/home/applied">Applied</Link>
+                  <NavLink to="/home/applied" activeClassName="selected" href="/home/applied">Applied</NavLink>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="job-tab">
-                  <Link to="/home/follow-up" href="/home/follow-up">Follow-Up</Link>
+                  <NavLink to="/home/follow-up" activeClassName="selected" href="/home/follow-up">Follow-Up</NavLink>
                 </div>
               </div>
               </div>
@@ -69,6 +125,7 @@ class Home extends React.Component {
               <Route path="/home/applied" render={() => <Applied />} />
               <Route path="/home/follow-up" render={() => <FollowUp />} />
               <Route path="/home/enter-job" render={() => <Manual />} />
+              <Route path="/home" render={() => <Cards />} />
             </Switch>
           </div>
         </div>
@@ -77,4 +134,13 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {auth: state.auth}
+}
+
+export default connect(mapStateToProps, { logout })(Home);

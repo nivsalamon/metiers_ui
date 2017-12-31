@@ -13,6 +13,10 @@ const webpackConfig = {
     extensions: ['.js', '.jsx'],
   },
   devtool: 'inline-source-map',
+  node: {
+    net: 'empty',
+    dns: 'empty'
+  }
 };
 
 webpackConfig.module.loaders.push({

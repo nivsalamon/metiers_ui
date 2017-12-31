@@ -6,6 +6,26 @@
   margin-top:25px;
 }
 
+.push-top-sm-xs{
+  margin-top:15px;
+}
+
+.push-left {
+  margin-left: 25px;
+}
+
+.push-left-sm {
+  margin-left: 15px;
+}
+
+.push-right {
+  margin-left: 25px;
+}
+
+.push-right-sm {
+  margin-left: 15px;
+}
+
 .push-bottom {
   margin-bottom:50px;
 }
@@ -96,10 +116,6 @@
 
 .job-details-headers {
   margin: 15px 0px 0px 10px;
-}
-
-.push-left-sm {
-  margin-left: 15px;
 }
 
 .text-center {

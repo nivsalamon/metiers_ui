@@ -3,7 +3,6 @@ import CardsEntry from '../../../containers/cardsEntryActionContainer';
 
 const Cards = (props) => {
 
-
   return (
     <div className="row">
       <div className="col-md-4">
