@@ -34,6 +34,7 @@ class Manual extends Component {
         state: '',
         zip: '',
       },
+      dashboardRedirect: false
     };
 
     this.jobInputChange = this.jobInputChange.bind(this);
@@ -89,7 +90,7 @@ class Manual extends Component {
   }
 
   removeModal() {
-    document.getElementbyClassName('modal-backdrop fade show').remove();
+    this.setState({dashboardRedirect: true});
   }
 
   jobFormSubmit(e) {
@@ -103,6 +104,9 @@ class Manual extends Component {
   }
 
   render() {
+    if(this.state.dashboardRedirect){
+      return <Redirect to="/home" />
+    }
     return (
       <div>
         <div className="container push-top">
@@ -181,7 +185,7 @@ class Manual extends Component {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h4 className="modal-title">SUCCESS!</h4>
-                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">&times;</button>
                   </div>
                   <div className="modal-body">
                     <p>Successfully Added Job Lead!</p>
@@ -190,9 +194,9 @@ class Manual extends Component {
                     <Link to="/home/enter-job" href="/home/enter-job" className="btn btn-secondary" data-dismiss="modal">
                       Add Another Job Lead
                     </Link>
-                    <Link to="/home" href="/home" className="btn btn-job-form" onClick={this.removeModal}>
+                    <button type="button" className="btn btn-job-form" onClick={this.removeModal} data-dismiss="modal">
                       Go to Dashboard
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
