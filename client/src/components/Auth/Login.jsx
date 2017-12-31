@@ -21,25 +21,11 @@ class Login extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-
-  // loginSubmit(e) {
-  //   e.preventDefault();
-  //   this.props.login(this.state).then((res) => {
-  //     console.log('inside component res next')
-  //     console.log(res)
-  //     if(localStorage.getItem('jwtToken') === '' || localStorage.getItem('jwtToken') === undefined){
-  //       this.setState({errors: true});
-  //     } else {
-  //       this.setState({loginSuccess: true});
-  //     }
-  //   });
-
-
   loginSubmit(e) {
     e.preventDefault();
     this.props.login(this.state).then((res) => {
       console.log('res in comp')
-      console.log(res)
+      console.log(res);
       if(res.status === 200){
         console.log(res.data.token);
         this.setState({loginSuccess: true});
