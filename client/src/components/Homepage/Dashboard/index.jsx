@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Navigation from '../../Navigation/Navigation';
-import { Switch, Route, Link, NavLink } from 'react-router-dom';
+import { Switch, Route, Link, NavLink, Redirect } from 'react-router-dom';
 import WillApply from '../../../containers/willApplyContainer';
 import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
@@ -9,17 +9,19 @@ import dashboardContainer from '../../../containers/dashboardContainer';
 import Manual from '../Manual';
 import { logout } from '../../../actions/authActions';
 import PropTypes from 'prop-types';
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 import './dashboard.css';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleClass = this.toggleClass.bind(this);
     this.state = {
       active: false,
+      logout: false,
     };
-  }
+    this.toggleClass = this.toggleClass.bind(this);
+    this.capitalize = this.capitalize.bind(this);
+  } 
 
   componentWillMount() {
     // auth.refresh();
@@ -45,11 +47,21 @@ class Home extends React.Component {
     e.preventDefault();
     this.props.logout();
     console.log('HELLOOOOOOO TRYING TO LOGOUT HERE')
+    this.setState({logout: true});
+  }
+
+  capitalize(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   render() {
+    const {isAuthenticated} = this.props.auth;
 
-    return (
+    if(this.state.logout){
+      return <Redirect to="/login" />
+    }
+
+    return (      
       <div>
         <div id="wrapper" className={this.state.active ? 'toggled' : 'notToggled'}>
           <Navigation />
@@ -66,7 +78,7 @@ class Home extends React.Component {
                   </button>
                 </div>
                 <div className="offset-md-2 col-md-6">
-                  <h3>Your Name</h3>
+                  <h3>{this.capitalize(this.props.auth.user.firstName)} {this.capitalize(this.props.auth.user.lastName)}</h3>
                 </div>
                 <div className="col-md-1">
                   <a href="#" onClick={this.logoutHandler.bind(this)}>Logout</a>
@@ -104,5 +116,15 @@ class Home extends React.Component {
     );
   }
 }
-// export default connect(mapStateToProps, { logout })(Home);
-export default Home;
+
+Home.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {auth: state.auth}
+}
+
+export default connect(mapStateToProps, { logout })(Home);
+// export default Home;

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import dashboardReducer from './dashboardReducer';
-import authReducer from './authReducer';
+import auth from './authReducer';
 // import searchJobsReducer from './Search/searchJobsReducer';
 // import searchJobDetailsReducer from './Search/searchJobDetailsReducer';
 // import savedSearchedJobsReducer from './Search/savedSearchedJobsReducers';
@@ -9,7 +9,7 @@ import authReducer from './authReducer';
 
 const allReducers = combineReducers({
   dashboardLoad: dashboardReducer,
-  authReducer
+  auth
 });
 
 
