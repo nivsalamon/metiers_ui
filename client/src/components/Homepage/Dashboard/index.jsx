@@ -46,7 +46,6 @@ class Home extends React.Component {
   logoutHandler(e){
     e.preventDefault();
     this.props.logout();
-    console.log('HELLOOOOOOO TRYING TO LOGOUT HERE')
     this.setState({logout: true});
   }
 
@@ -55,7 +54,6 @@ class Home extends React.Component {
   }
 
   render() {
-    const {isAuthenticated} = this.props.auth;
 
     if(this.state.logout){
       return <Redirect to="/login" />
@@ -127,4 +125,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { logout })(Home);
-// export default Home;

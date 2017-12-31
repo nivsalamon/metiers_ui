@@ -4,6 +4,8 @@ import axios from 'axios';
 import moment from 'moment';
 import Job from './Job';
 import Company from './Company';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './manual.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -92,6 +94,7 @@ class Manual extends Component {
 
   jobFormSubmit(e) {
     axios.post('http://localhost:3003/manual', {
+      id: this.props.auth.user.id,
       job: this.state.job,
       company: this.state.company,
     }).then((res) => {
@@ -201,4 +204,8 @@ class Manual extends Component {
   }
 }
 
-export default Manual;
+const mapStateToProps = (state) => {
+  return {auth: state.auth}
+}
+
+export default connect(mapStateToProps)(Manual);
