@@ -5,6 +5,7 @@ class Notes extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      jobId: this.props.jobDetailsAdditional.job_id,
       jobNotes: this.props.jobDetailsAdditional.job_notes,
     }
 
@@ -21,9 +22,13 @@ class Notes extends Component {
     });
   }
 
-
   handleSubmit() {
-    console.log('I will update job notes');
+    const context = this;
+
+    axios.post('http://localhost:3003/editNotes', {
+      jobId: this.state.jobId,
+      jobNotes: this.state.jobNotes
+    })
   }
 
   render() {

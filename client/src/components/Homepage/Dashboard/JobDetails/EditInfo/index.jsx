@@ -10,6 +10,7 @@ class EditInfo extends Component {
     super(props)
     this.state = {
       job: {
+        jobId: this.props.jobDetailsAdditional.job_id,
         title: this.props.jobDetailsAdditional.job_title_name,
         description: this.props.jobDetailsAdditional.job_description,
         source: this.props.jobDetailsAdditional.job_source,
@@ -17,9 +18,9 @@ class EditInfo extends Component {
         ranking: this.props.jobDetailsAdditional.ranking,
         deadline: moment(this.props.jobDetailsAdditional.deadline.split('T')[0]),
         link: this.props.jobDetailsAdditional.url,
-        createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
       },
       company: {
+        companyId: this.props.jobDetailsAdditional.company_id,
         name: this.props.jobDetailsAdditional.company_name,
         description: this.props.jobDetailsAdditional.company_description,
         phone: this.props.jobDetailsAdditional.company_phone,
@@ -80,15 +81,12 @@ class EditInfo extends Component {
   }
 
   handleSubmit() {
-    // axios.post('/jobInfo', {
-    //   jobId: this.props.jobDetailsAdditional.jobId,
-    //   jobNotes: this.state.jobNotes
-    // })
-    
-    // axios.put('/jobInfo', {
-    //   jobId: this.props.jobDetailsAdditional.jobId,
-    //   jobNotes: this.state.jobNotes
-    // })
+    axios.post('http://localhost:3003/editJobInfo', {
+      job: this.state.job,
+      company: this.state.company,
+    }).then((res) => {
+      console.log('Successfully post to DB', res);
+    })
   }
 
   render() {

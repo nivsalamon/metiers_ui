@@ -19,7 +19,12 @@ class JobDetail extends Component {
 
   componentWillMount() {
     const context = this;
+<<<<<<< HEAD
     if (this.state.redirecrt === false) {
+=======
+
+    if (this.state.redirect === false) {
+>>>>>>> [add]
       this.setState({
         toggle: true,
       });
