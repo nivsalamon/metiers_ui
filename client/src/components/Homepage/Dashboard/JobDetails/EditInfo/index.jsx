@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-import EditJob from './EditJobInfo';
-import EditCompany from './EditCompanyInfo';
+import EditJob from './EditJob';
+import EditCompany from './EditCompany';
 
 class EditInfo extends Component {
   constructor(props) {
@@ -159,7 +159,7 @@ class EditInfo extends Component {
                     <p>Successfully Updated Job Information!</p>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/job-detail" href="/job-detail"  className="btn btn-primary" onClick={this.removeModal}>
+                    <Link to="/home/job-detail" href="/home/job-detail"  className="btn btn-primary" onClick={this.removeModal}>
                       Close
                     </Link>
                   </div>

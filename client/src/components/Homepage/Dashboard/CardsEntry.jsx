@@ -18,8 +18,8 @@ class CardsEntry extends React.Component {
     return (
       <div className="card-wrapper">
         <div className="card-inner">
-          <h6 className="job_company">{this.props.job.company_name}</h6>
-          <Link to="/job-detail" href="/job-detail" job={this.props.job}>
+          <h6 className="job_company">{this.props.job.company_name}</h6>  
+          <Link to="/home/job-detail" href="/home/job-detail" job={this.props.job}>
             <h6 className="job_title" onClick={this.showDetails}>{this.props.job.job_title_name}</h6>
           </Link>
           <a className="original_job_url" href={'http://' + this.props.job.url !== 'http://' ? 'http://' + this.props.job.url : ""} target="_blank">Job Application</a>

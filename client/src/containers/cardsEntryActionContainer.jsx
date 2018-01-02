@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import cardsEntry from '../components/HomePage/DashBoard/CardsEntry';
-// import showJobDetails from '../actions/jobDetails';
+import showJobDetails from '../actions/jobDetails';
 
 function matchDispatchToProps (dispatch) {
   return bindActionCreators({
-    // showJobDetails: showJobDetails,
+    showJobDetails: showJobDetails,
   }, dispatch);
 }
 

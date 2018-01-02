@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import InitialInfo from './InitialInfo';
+import InitialInfo from '../../../../containers/JobDetails/jobInfoPropsContainer';
 
 class Info extends Component {
   constructor() {
@@ -10,7 +10,7 @@ class Info extends Component {
   render() {
     return (
       <div>
-        <Link to="/job-detail/edit-info" href="/job-detail/edit-info" className="btn btn-primary">
+        <Link to="/home/job-detail/edit-info" href="/home/job-detail/edit-info" className="btn btn-primary">
           Edit
         </Link>
         <InitialInfo />
