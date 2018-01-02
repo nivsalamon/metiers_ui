@@ -8,6 +8,7 @@ import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
 import Cards from '../../../containers/cardsContainer';
 import Manual from '../Manual';
+import Info from '../../../containers/JobDetails/jobDetailsPropsContainer'
 import { logout } from '../../../actions/authActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -40,21 +41,21 @@ class Home extends React.Component {
       .catch(err => console.log(err));
   }
 
-  componentDidMount() {
-    // auth.refresh();
-    var context = this;
-    axios.post(`http://localhost:3003/dashboard`, {
-      id: this.props.auth.user.id,
-    }).then((res) => {
-        console.log('this is res.datasdasdasda', res.data)
-        if (res.data.length === 0) {
-          context.props.dashboardAction([]);
-        } else {
-          context.props.dashboardAction(res.data);
-        }
-      })
-      .catch(err => console.log(err));
-  }
+  // componentDidMount() {
+  //   // auth.refresh();
+  //   var context = this;
+  //   axios.post(`http://localhost:3003/dashboard`, {
+  //     id: this.props.auth.user.id, 
+  //   }).then((res) => {
+  //       console.log('this is res.datasdasdasda', res.data)
+  //       if (res.data.length === 0) {
+  //         context.props.dashboardAction([]);
+  //       } else {
+  //         context.props.dashboardAction(res.data);
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   toggleClass() {
     const currentState = this.state.active;
@@ -125,6 +126,7 @@ class Home extends React.Component {
               <Route path="/home/applied" render={() => <Applied />} />
               <Route path="/home/follow-up" render={() => <FollowUp />} />
               <Route path="/home/enter-job" render={() => <Manual />} />
+              <Route path="/home/job-detail" render={() => <Info />} />
               <Route path="/home" render={() => <Cards />} />
             </Switch>
           </div>

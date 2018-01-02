@@ -80,12 +80,26 @@ class Manual extends Component {
   }
 
   linkChecker(str) {
+    const oldJob = this.state['job'];
+    const newJob = this.state['job'];
+    let value = str;
+
     if (str.includes('https://')) {
-      return str.slice(8);
+      value = str.slice(8);
+      newJob['link'] = value;
+
+      this.setState({
+        oldJob: newJob,
+      });
     }
   
     if (str.includes('http://')) {
-      return str.slice(7);
+      value = str.slice(7);
+      newJob['link'] = value;
+
+      this.setState({
+        oldJob: newJob,
+      });
     }
   }
 
@@ -94,6 +108,8 @@ class Manual extends Component {
   }
 
   jobFormSubmit(e) {
+    this.linkChecker(this.state.job.link);
+
     axios.post('http://localhost:3003/manual', {
       id: this.props.auth.user.id,
       job: this.state.job,
