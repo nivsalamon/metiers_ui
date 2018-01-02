@@ -5,7 +5,7 @@ class Notes extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      jobNotes: '',
+      jobNotes: this.props.jobDetailsAdditional.job_notes,
     }
 
     this.handleUserInput = this.handleUserInput.bind(this);

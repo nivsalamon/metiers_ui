@@ -5,7 +5,7 @@ import Ripple from '../../Search/Ripple.svg';
 import ActivityLog from './ActivityLog';
 import Info from './Info';
 import Notes from '../../../../containers/JobDetails/editNotesPropsContainer';
-import EditInfo from './EditInfo';
+import EditInfo from '../../../../containers/JobDetails/editInfoPropsContainer';
 import Notifications from './Notification';
 
 class JobDetail extends Component {
@@ -19,7 +19,7 @@ class JobDetail extends Component {
 
   componentWillMount() {
     const context = this;
-    
+
     if (this.state.redirecrt === false) {
       this.setState({
         toggle: true,
@@ -75,12 +75,11 @@ class JobDetail extends Component {
             <div className="row justify-content-md-center text-center">
               <div className="col-md-4">
                 <div className="left-align">
-                <h1>Hello</h1>
-                  {/* <h4>{this.props.jobDetails.company_name} - {this.props.jobDetails.job_title_name}</h4>
-                  <h5>{this.props.jobDetails.status}</h5>
-                  <h5>Rating: {this.props.jobDetails.rating}</h5> */}
+                  <h4>{this.props.jobDetailsAdditional.company_name} - {this.props.jobDetailsAdditional.job_title_name}</h4>
+                  <h5>{this.props.jobDetailsAdditional.status}</h5>
+                  <h5>Ranking: {this.props.jobDetailsAdditional.ranking}</h5>
                   {/* <h6>Deadline: {this.props.jobDetails.deadline.split('T')[0]}</h6> */}
-                  {/* <a href={'http://' + this.props.jobDetails.url} target="_blank">Job Application Link</a> */}
+                  <a href={'http://' + this.props.jobDetailsAdditional.url} target="_blank">Job Application Link</a>
                 </div>
               </div>
             </div>

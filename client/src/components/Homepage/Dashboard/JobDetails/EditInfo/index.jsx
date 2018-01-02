@@ -10,25 +10,24 @@ class EditInfo extends Component {
     super(props)
     this.state = {
       job: {
-        title: '',
-        description: '',
-        notes: '',
-        source: '',
-        status: 'Will Apply',
-        ranking: '5',
-        deadline: moment(),
-        link: '',
+        title: this.props.jobDetailsAdditional.job_title_name,
+        description: this.props.jobDetailsAdditional.job_description,
+        source: this.props.jobDetailsAdditional.job_source,
+        status: this.props.jobDetailsAdditional.status,
+        ranking: this.props.jobDetailsAdditional.ranking,
+        deadline: moment(this.props.jobDetailsAdditional.deadline.split('T')[0]),
+        link: this.props.jobDetailsAdditional.url,
         createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
       },
       company: {
-        name: '',
-        description: '',
-        phone: '',
-        address1: '',
-        address2: '',
-        city: '',
-        state: '',
-        zip: '',
+        name: this.props.jobDetailsAdditional.company_name,
+        description: this.props.jobDetailsAdditional.company_description,
+        phone: this.props.jobDetailsAdditional.company_phone,
+        address1: this.props.jobDetailsAdditional.company_address1,
+        address2: this.props.jobDetailsAdditional.company_address2,
+        city: this.props.jobDetailsAdditional.company_city,
+        state: this.props.jobDetailsAdditional.company_state,
+        zip: this.props.jobDetailsAdditional.company_zip,
       },
     }
 
@@ -39,6 +38,9 @@ class EditInfo extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    console.log(this.props.jobDetailsAdditional.deadline)
+  }
   jobInputChange(key, e) {
     const oldJob = this.state['job'];
     const newJob = this.state['job'];
