@@ -127,7 +127,7 @@ class Home extends React.Component {
               <Route path="/home/follow-up" render={() => <FollowUp />} />
               <Route path="/home/enter-job" render={() => <Manual />} />
               <Route path="/home/job-detail" render={() => <Info />} />
-              <Route path="/home" render={() => <Cards />} />
+              <Route path="/home" render={(props) => <Cards />} />
             </Switch>
           </div>
         </div>
