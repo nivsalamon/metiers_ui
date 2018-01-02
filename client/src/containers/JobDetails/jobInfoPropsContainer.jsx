@@ -4,7 +4,6 @@ import jobInfoDetails from '../../components/Homepage/Dashboard/JobDetails/Initi
 
 function mapStateToProps (state) {
   return {
-    jobDetails: state.searchJobDetails,
     jobDetailsAdditional: state.jobDetailsAdditional,
   }
 }

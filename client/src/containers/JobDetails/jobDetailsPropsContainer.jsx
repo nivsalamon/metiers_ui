@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import jobDetails from '../../components/Homepage/Dashboard/JobDetails';
@@ -17,5 +18,5 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(jobDetails);
+export default withRouter(connect(mapStateToProps, matchDispatchToProps)(jobDetails));
 
