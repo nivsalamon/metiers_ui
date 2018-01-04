@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import EditJob from './EditJob';
@@ -30,18 +30,16 @@ class EditInfo extends Component {
         state: this.props.jobDetailsAdditional.company_state,
         zip: this.props.jobDetailsAdditional.company_zip,
       },
-    }
+      editInfoRedirect: false,
+    };
 
     this.jobInputChange = this.jobInputChange.bind(this);
     this.companyInputChange = this.companyInputChange.bind(this);
     this.dateChange = this.dateChange.bind(this);
-    this.removeModal = this.removeModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    console.log(this.props.jobDetailsAdditional.deadline)
-  }
   jobInputChange(key, e) {
     const oldJob = this.state['job'];
     const newJob = this.state['job'];
@@ -51,8 +49,6 @@ class EditInfo extends Component {
     this.setState({
       oldJob: newJob,
     });
-
-    console.log(this.state.job);
   }
 
   companyInputChange(key, e) {
@@ -64,8 +60,6 @@ class EditInfo extends Component {
     this.setState({
       oldCompany: newCompany,
     });
-
-    console.log(this.state.company);
   }
 
   dateChange(date) {
@@ -76,8 +70,17 @@ class EditInfo extends Component {
     });
   }
 
-  removeModal() {
-    document.getElementbyClassName('modal-backdrop fade show').remove();
+  closeModal() {
+    const context = this;
+
+    axios.post('http://localhost:3003/jobDetail', {
+        jobId: this.state.job.jobId
+    }).then((res) => {
+      context.props.jobDetailsAction(res.data[0]);
+      if (context.props.jobDetailsAdditional) {
+        this.setState({editInfoRedirect: true});
+      }
+    })
   }
 
   handleSubmit() {
@@ -90,6 +93,9 @@ class EditInfo extends Component {
   }
 
   render() {
+    if (this.state.editInfoRedirect) {
+      return <Redirect to="/home/job-detail" />
+    }
     return (
       <div className="container">
         <form>
@@ -159,9 +165,9 @@ class EditInfo extends Component {
                     <p>Successfully Updated Job Information!</p>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/home/job-detail" href="/home/job-detail"  className="btn btn-primary" onClick={this.removeModal}>
+                    <button type="button" className="btn btn-primary" onClick={this.closeModal} data-dismiss="modal">
                       Close
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

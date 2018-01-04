@@ -104,17 +104,6 @@ const EditJobInfo = (props) => {
           </div>
         </div>
       </div>
-      <div className="form-group text-area">
-        <label>Notes</label>
-        <textarea
-          className="form-control"
-          id="notesInput"
-          rows="3"
-          placeholder="Notes for this job"
-          value={props.job['notes']}
-          onChange={props.jobInputChange.bind(this, 'notes')}
-        />
-      </div>
     </div>
   );
 };
