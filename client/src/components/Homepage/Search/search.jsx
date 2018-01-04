@@ -110,13 +110,13 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container text-center">
         <div>
           {this.state.toggle === false ?
           (
             <Switch>
-              <Route exact path="/search" render={(props) => <SearchResults />} />
-              <Route exact path="/search/details" render={(props) => <SearchJobDetails />} />
+              <Route exact path="/search" render={(props) => <SearchResults {...props} error = {this.state.error} saveOrDeleteJob={this.saveOrDeleteJob} handleKeyPress={this.handleKeyPress} handleChange={this.handleChange} value={this.state.value} clicked={this.clicked}/>} />
+              <Route exact path="/search/details" render={(props) => <SearchJobDetails {...props} saveOrDeleteJob={this.saveOrDeleteJob} handleKeyPressDetails={this.handleKeyPressDetails} handleChange={this.handleChange} value={this.state.value} clicked={this.clicked}/>} />
             </Switch>
           ) :
             <div className="center">
