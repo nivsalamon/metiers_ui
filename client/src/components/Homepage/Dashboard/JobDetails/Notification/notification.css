@@ -1,0 +1,12 @@
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box{
+  width:120px;
+}
+
+.checkbox > label > input{
+  margin-right:10px;
+}
+
+.date_time_picker{
+  min-width:250px;
+  cursor:pointer;
+}

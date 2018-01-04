@@ -42,21 +42,21 @@ class Home extends React.Component {
       .catch(err => console.log(err));
   }
 
-  // componentDidMount() {
-  //   // auth.refresh();
-  //   var context = this;
-  //   axios.post(`http://localhost:3003/dashboard`, {
-  //     id: this.props.auth.user.id, 
-  //   }).then((res) => {
-  //       console.log('this is res.datasdasdasda', res.data)
-  //       if (res.data.length === 0) {
-  //         context.props.dashboardAction([]);
-  //       } else {
-  //         context.props.dashboardAction(res.data);
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // }
+  componentDidMount() {
+    // auth.refresh();
+    // var context = this;
+    // axios.post(`http://localhost:3003/dashboard`, {
+    //   id: this.props.auth.user.id, 
+    // }).then((res) => {
+    //     console.log('this is res.datasdasdasda', res.data)
+    //     if (res.data.length === 0) {
+    //       context.props.dashboardAction([]);
+    //     } else {
+    //       context.props.dashboardAction(res.data);
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
+  }
 
   toggleClass() {
     const currentState = this.state.active;

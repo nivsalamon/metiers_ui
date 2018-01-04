@@ -6,7 +6,7 @@ import ActivityLog from '../../../../containers/JobDetails/activityLogContainer'
 import Info from './Info';
 import Notes from '../../../../containers/JobDetails/editNotesPropsContainer';
 import EditInfo from '../../../../containers/JobDetails/editInfoPropsContainer';
-import Notifications from './Notification';
+import Notification from './Notification/notification';
 
 class JobDetail extends Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class JobDetail extends Component {
 
   componentWillMount() {
     const context = this;
-
     if (this.state.redirecrt === false) {
       this.setState({
         toggle: true,
@@ -108,7 +107,7 @@ class JobDetail extends Component {
             <div className="job-detail-sections">
               <Switch>
                 <Route path="/home/job-detail/notes" render={() => <Notes />} />
-                <Route path="/home/job-detail/notifications" render={() => <Notifications />} />
+                <Route path="/home/job-detail/notifications" render={() => <Notification jobId={this.props.jobDetails.id}/>} />
                 <Route path="/home/job-detail/activity-log" render={() => <ActivityLog />} />
                 {/* <Route path="/home/job-detail/activity-log" render={() => <ActivityLog jobId={this.props.jobDetailsAdditional.jobId}/>} /> */}
                 <Route path="/home/job-detail/edit-info" render={() => <EditInfo />} />

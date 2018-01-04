@@ -120,6 +120,7 @@ class Manual extends Component {
   }
 
   render() {
+    console.log('this.props= ', this.props.history)
     if(this.state.dashboardRedirect){
       return <Redirect to="/home" />
     }
