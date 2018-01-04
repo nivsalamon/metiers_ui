@@ -8,7 +8,8 @@ import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
 import Cards from '../../../containers/cardsContainer';
 import Manual from '../Manual';
-import Info from '../../../containers/JobDetails/jobDetailsPropsContainer'
+import Info from '../../../containers/JobDetails/jobDetailsPropsContainer';
+import Search from '../../../containers/Search/searchContainer';
 import { logout } from '../../../actions/authActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -31,13 +32,13 @@ class Home extends React.Component {
     axios.post(`http://localhost:3003/dashboard`, {
       id: this.props.auth.user.id,
     }).then((res) => {
-        console.log('this is res.data', res.data)
-        if (res.data.length === 0) {
-          context.props.dashboardAction([]);
-        } else {
-          context.props.dashboardAction(res.data);
-        }
-      })
+      console.log('this is res.data', res.data)
+      if (res.data.length === 0) {
+        context.props.dashboardAction([]);
+      } else {
+        context.props.dashboardAction(res.data);
+      }
+    })
       .catch(err => console.log(err));
   }
 
@@ -65,6 +66,8 @@ class Home extends React.Component {
   logoutHandler(e){
     e.preventDefault();
     this.props.logout();
+    localStorage.clear();
+    this.props.dashboardAction([]);
     this.setState({logout: true});
   }
 
@@ -119,7 +122,7 @@ class Home extends React.Component {
                   <NavLink to="/home/follow-up" activeClassName="selected" href="/home/follow-up">Follow-Up</NavLink>
                 </div>
               </div>
-              </div>
+            </div>
             </div>
             <Switch>
               <Route path="/home/will-apply" render={() => <WillApply />} />
@@ -127,6 +130,7 @@ class Home extends React.Component {
               <Route path="/home/follow-up" render={() => <FollowUp />} />
               <Route path="/home/enter-job" render={() => <Manual />} />
               <Route path="/home/job-detail" render={() => <Info />} />
+              <Route path="/home/search" render={() => <Search />} />
               <Route path="/home" render={(props) => <Cards />} />
             </Switch>
           </div>

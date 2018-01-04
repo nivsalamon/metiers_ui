@@ -18,27 +18,27 @@ class Navigation extends React.Component {
 
   render() {
     return (
-    <div id="wrapper" className={this.state.active ? 'toggled' : 'notToggled'}>
-      <div id="sidebar-wrapper">
-        <ul className="sidebar-nav">
-          <li>
-            <Link to="/home" href="/home">Dashboard</Link>
-          </li>
-          <li>
-            Search
-          </li>
-          <li>
-            <Link to="/home/enter-job" href="/home/enter-job">Enter Job</Link>
-          </li>
-          <li>
-            <Link to="/login" href="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup" href="/signup">Sign Up</Link>
-          </li>
-        </ul>
+      <div id="wrapper" className={this.state.active ? 'toggled' : 'notToggled'}>
+        <div id="sidebar-wrapper">
+          <ul className="sidebar-nav">
+            <li>
+              <Link to="/home" href="/home">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/home/search" href="/home/search">Search</Link>
+            </li>
+            <li>
+              <Link to="/home/enter-job" href="/home/enter-job">Enter Job</Link>
+            </li>
+            <li>
+              <Link to="/login" href="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup" href="/signup">Sign Up</Link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
     );
   }
 }
