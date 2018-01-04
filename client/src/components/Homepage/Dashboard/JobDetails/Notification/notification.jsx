@@ -21,6 +21,7 @@ class Notification extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleAddNotifications = this.handleAddNotifications.bind(this);
+    this.updateNotificationsTable = this.updateNotificationsTable.bind(this);
   }
 
   handleUserInput(e) {
@@ -54,6 +55,18 @@ class Notification extends Component {
         console.log('res', res);
       });
     }
+  }
+
+  updateNotificationsTable(){
+    var currStateNotifications = this.state.notifications.slice();
+    currStateNotifications.push({
+      id: JSON.stringify(this.state.NotificationDateTime).replace(/"/g,""), 
+      userId: this.props.jobId,
+      name: this.state.NotificationName,
+      notes: this.state.NotificationMessage,
+      notifyOn: JSON.stringify(this.state.NotificationDateTime),
+    })
+    this.setState({notifications: currStateNotifications});
   }
 
   componentDidMount(){
@@ -96,7 +109,7 @@ class Notification extends Component {
             <textarea className="form-control" name="NotificationMessage" placeholder="Message" onChange={this.handleUserInput}></textarea>
           </div>
           <div className="offset-md-1 col-md-10 offset-md-1 push-top-sm">
-            <button className="btn btn-primary" onClick={this.handleAddNotifications}>Save</button>
+            <button className="btn btn-primary" data-toggle="modal" data-target="#submitModal" onClick={this.updateNotificationsTable}>Save</button>
             { this.state.errors && <div className="alert alert-danger push-top-sm">Please enter a notification title, message, and future date &amp; time.</div> }
           </div>
           <div className="offset-md-1 col-md-10 offset-md-1 push-top">
@@ -125,9 +138,36 @@ class Notification extends Component {
           </table>
           }
           </div>
+          <div className="modal fade" id="submitModal" role="dialog">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h4 className="modal-title">SUCCESS!</h4>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  </div>
+                  <div className="modal-body">
+                    <p>Successfully Added Notification!</p>
+                    <p>Title: {this.state.NotificationName}</p>
+                    <p>Message: {this.state.NotificationMessage}</p>
+                    <p>Date:
+                      &nbsp; 
+                      {JSON.stringify(this.state.NotificationDateTime._d).split('T')[0].replace(/"/g,"").split('-')[1]}-
+                      {JSON.stringify(this.state.NotificationDateTime._d).split('T')[0].replace(/"/g,"").split('-')[2]}-
+                      {JSON.stringify(this.state.NotificationDateTime._d).split('T')[0].replace(/"/g,"").split('-')[0]}
+                    </p>
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-job-form" onClick={this.handleAddNotifications} data-dismiss="modal">
+                      Exit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
+    
     );
   }
 }

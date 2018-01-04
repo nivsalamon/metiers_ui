@@ -56,7 +56,6 @@ class Home extends React.Component {
     //     }
     //   })
     //   .catch(err => console.log(err));
-    console.log('we mounting')
   }
 
   toggleClass() {
