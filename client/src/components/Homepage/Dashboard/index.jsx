@@ -7,14 +7,9 @@ import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
 import Cards from '../../../containers/cardsContainer';
-<<<<<<< HEAD
 import Manual from '../Manual';
 import Info from '../../../containers/JobDetails/jobDetailsPropsContainer';
 import Search from '../../../containers/Search/searchContainer';
-=======
-import Manual from '../../../containers/manualContainer';
-import Info from '../../../containers/JobDetails/jobDetailsPropsContainer'
->>>>>>> [add]
 import { logout } from '../../../actions/authActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
