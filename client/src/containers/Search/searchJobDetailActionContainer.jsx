@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import searchResultsEntry from '../../components/HomePage/Jobs/Search/searchResultsEntry';
+import searchResultsEntry from '../../components/Homepage/Search/searchResultsEntry';
 import showJobDetails from '../../actions/jobDetails';
 import saveOrDeleteSearchedJobs from '../../actions/saveSearchedJobs';
 

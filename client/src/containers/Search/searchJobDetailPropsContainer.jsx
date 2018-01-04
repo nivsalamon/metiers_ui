@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import searchJobDetails from '../../components/HomePage/Jobs/Search/searchJobDetails';
+import searchJobDetails from '../../components/Homepage/Search/searchJobDetails';
 
 function mapStateToProps (state) {
   return {

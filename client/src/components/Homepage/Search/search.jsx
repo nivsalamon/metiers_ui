@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Ripple from './Ripple.svg';
-import SearchJobDetails from './searchJobDetails';
-import SearchResults from './searchResults';
+import SearchResults from '../../../containers/Search/searchResultsContainer';
+import SearchJobDetails from '../../../containers/Search/searchJobDetailPropsContainer';
 
 class Search extends React.Component {
   constructor(props) {

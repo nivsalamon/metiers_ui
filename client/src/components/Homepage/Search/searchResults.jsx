@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-import SearchResultsEntry from './searchResultsEntry'
+import SearchResultsEntry from '../../../containers/Search/searchJobDetailActionContainer';
 
 class SearchResults extends React.Component {
   constructor(props) {
