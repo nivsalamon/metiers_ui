@@ -1,5 +1,4 @@
 import React from 'react';
-// import axios from 'axios';
 import Checkbox from 'rc-checkbox';
 import { Link } from 'react-router-dom';
 
@@ -32,12 +31,12 @@ class SearchResultsEntry extends React.Component {
     if (this.props.job.checkbox === 0) {
       this.props.saveOrDeleteJob(this.props.job, true, 1);
       this.setState({
-        checked: true
+        checked: true,
       });
     } else {
       this.props.saveOrDeleteJob(this.props.job, false, 0);
       this.setState({
-        checked : false
+        checked : false,
       });
     }
   }
@@ -71,9 +70,8 @@ class SearchResultsEntry extends React.Component {
         </div>
         }
       </div>
-    )
+    );
   }
-
 }
 
-export default SearchResultsEntry
+export default SearchResultsEntry;

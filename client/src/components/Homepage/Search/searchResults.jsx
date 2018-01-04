@@ -10,6 +10,7 @@ class SearchResults extends React.Component {
     this.state = {
       searched: false,
     }
+    this.getAllJobsForDashboard = this.getAllJobsForDashboard.bind(this);
   }
 
   componentWillMount() {
@@ -23,14 +24,15 @@ class SearchResults extends React.Component {
       return;
     }
     const context = this;
-    axios.post(`${auth.serverUrl}/company/search`, {
-      jobs: context.props.savedSearchedJobs
+    axios.post('http://localhost:3003/company/search', {
+      id: context.props.auth.user.id,
+      jobs: context.props.savedSearchedJobs,
     }).then(function(response) {
-      console.log('this is respnose', response);
-      axios.post(`${auth.serverUrl}/job/search`, {
+      axios.post('http://localhost:3003/job/search', {
+        id: context.props.auth.user.id,
         jobs: context.props.savedSearchedJobs
       }).then(function(response) {
-        console.log('this is response 2', response);
+        context.getAllJobsForDashboard();
         context.props.saveOrDeleteSearchedJobs({checked: "Refresh"}, [])
         context.setState({
           searched: true,
@@ -38,6 +40,21 @@ class SearchResults extends React.Component {
       })
     });
   };
+
+  getAllJobsForDashboard() {
+    var context = this;
+    axios.post(`http://localhost:3003/dashboard`, {
+      id: this.props.auth.user.id,
+    }).then((res) => {
+      console.log('this is res.data', res.data)
+      if (res.data.length === 0) {
+        context.props.dashboardAction([]);
+      } else {
+        context.props.dashboardAction(res.data);
+      }
+    })
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (

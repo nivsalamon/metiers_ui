@@ -10,7 +10,8 @@ function mapStateToProps(state) {
     searchResults: state.searchResults,
     savedSearchedJobs: state.savedSearchedJobs,
     dashboardLoad: state.dashboardLoad,
-  }
+    auth: state.auth,
+  };
 }
 
 function matchDispatchToProps(dispatch) {

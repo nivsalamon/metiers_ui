@@ -3,9 +3,9 @@ import dashboardReducer from './dashboardReducer';
 import auth from './authReducer';
 import searchJobsReducer from './Search/searchJobsReducer';
 import searchJobDetailsReducer from './Search/searchJobDetailsReducer';
-import savedSearchedJobsReducer from './Search/savedSearchedJobsReducers';
+import savedSearchedJobsReducer from './Search/savedSearchedJobsReducer';
 import jobDetailsAdditionalReducer from './jobDetailsAdditionalReducer';
-// import activityLogReducer from './activityLogReducer';
+import activityLogReducer from './activityLogReducer';
 
 const allReducers = combineReducers({
   dashboardLoad: dashboardReducer,
@@ -13,6 +13,7 @@ const allReducers = combineReducers({
   searchJobDetails: searchJobDetailsReducer,
   searchResults: searchJobsReducer,
   savedSearchedJobs: savedSearchedJobsReducer,
+  activityLogData: activityLogReducer,
   auth
 });
 

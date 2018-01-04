@@ -20,6 +20,10 @@ class Search extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleKeyPressDetails = this.handleKeyPressDetails.bind(this);
   }
+
+  componentDidMount() {
+    console.log('THIS IS MOUTNING')
+  }
   componentWillUnmount() {
     this.props.searchJobs([]);
     this.props.saveOrDeleteSearchedJobs({checked: 'Refresh'}, []);
@@ -59,7 +63,7 @@ class Search extends React.Component {
       this.setState({
         toggle: true,
       });
-      axios.post(`${auth.serverUrl}/github`, {
+      axios.post('http://localhost:3003/github', {
         searched: context.state.value,
       }).then(function(response) {
         response.data.listings.listing.map((job, i) => {
@@ -85,7 +89,7 @@ class Search extends React.Component {
       this.setState({
         toggle: true,
       });
-      axios.post(`${auth.serverUrl}/github`, {
+      axios.post('http://localhost:3003/github', {
         searched: context.state.value,
       }).then(function(response) {
         context.props.searchJobs(response.data);
@@ -115,13 +119,13 @@ class Search extends React.Component {
           {this.state.toggle === false ?
           (
             <Switch>
-              <Route exact path="/search" render={(props) => <SearchResults {...props} error = {this.state.error} saveOrDeleteJob={this.saveOrDeleteJob} handleKeyPress={this.handleKeyPress} handleChange={this.handleChange} value={this.state.value} clicked={this.clicked}/>} />
-              <Route exact path="/search/details" render={(props) => <SearchJobDetails {...props} saveOrDeleteJob={this.saveOrDeleteJob} handleKeyPressDetails={this.handleKeyPressDetails} handleChange={this.handleChange} value={this.state.value} clicked={this.clicked}/>} />
+              <Route exact path="/home/search" render={(props) => <SearchResults {...props} error = {this.state.error} saveOrDeleteJob={this.saveOrDeleteJob} handleKeyPress={this.handleKeyPress} handleChange={this.handleChange} value={this.state.value} clicked={this.clicked}/>} />
+              <Route exact path="/home/search/details" render={(props) => <SearchJobDetails {...props} saveOrDeleteJob={this.saveOrDeleteJob} handleKeyPressDetails={this.handleKeyPressDetails} handleChange={this.handleChange} value={this.state.value} clicked={this.clicked}/>} />
             </Switch>
           ) :
             <div className="center">
               <Ripple />
-              {this.state.redirect === true ? (<Redirect to="/search/" />) : null}
+              {this.state.redirect === true ? (<Redirect to="/home/search/" />) : null}
             </div>
           }
         </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import Ripple from '../../Search/Ripple.svg';
-import ActivityLog from './ActivityLog';
+import ActivityLog from '../../../../containers/JobDetails/activityLogContainer';
 import Info from './Info';
 import Notes from '../../../../containers/JobDetails/editNotesPropsContainer';
 import EditInfo from '../../../../containers/JobDetails/editInfoPropsContainer';

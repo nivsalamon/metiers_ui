@@ -4,10 +4,11 @@ import Navigation from './Navigation/Navigation';
 import Login from './Auth/Login';
 import Signup from './Auth/Signup';
 import HomeContainer from '../containers/dashboardContainer';
+import Search from '../containers/Search/searchContainer';
 
 
 class App extends React.Component {
-
+  
   render() {
     return (
       <Switch>
