@@ -12,7 +12,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 class Manual extends Component {
   constructor() {
     super();
-    this.initialState = {
+    this.state = {
       job: {
         title: '',
         description: '',
@@ -37,11 +37,12 @@ class Manual extends Component {
       dashboardRedirect: false
     };
     
-    this.state = this.initialState;
+    this.initialState = this.state;
     this.jobInputChange = this.jobInputChange.bind(this);
     this.companyInputChange = this.companyInputChange.bind(this);
     this.dateChange = this.dateChange.bind(this);
-    this.linkChecker = this.linkChecker.bind(this); 
+    this.linkChecker = this.linkChecker.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.jobFormSubmit = this.jobFormSubmit.bind(this);
   }
@@ -102,6 +103,11 @@ class Manual extends Component {
         oldJob: newJob,
       });
     }
+  }
+
+  resetState() {
+    console.log('im clicking')
+    this.setState(this.initialState);
   }
 
   closeModal() {
@@ -222,7 +228,7 @@ class Manual extends Component {
                     <p>Successfully Added Job Lead!</p>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/home/enter-job" href="/home/enter-job" className="btn btn-secondary" data-dismiss="modal">
+                    <Link to="/home/enter-job" href="/home/enter-job" className="btn btn-secondary" onClick={this.resetState} data-dismiss="modal">
                       Add Another Job Lead
                     </Link>
                     <button type="button" className="btn btn-job-form" onClick={this.closeModal} data-dismiss="modal">

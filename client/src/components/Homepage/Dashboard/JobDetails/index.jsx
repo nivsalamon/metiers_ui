@@ -82,7 +82,10 @@ class JobDetail extends Component {
                   <h4>{this.props.jobDetailsAdditional.company_name} - {this.props.jobDetailsAdditional.job_title_name}</h4>
                   <h5>{this.props.jobDetailsAdditional.status}</h5>
                   <h5>Ranking: {this.props.jobDetailsAdditional.ranking}</h5>
-                  {/* <h6>Deadline: {this.props.jobDetails.deadline.split('T')[0]}</h6> */}
+                  {
+                    this.props.jobDetailsAdditional.deadline === '' ?
+                    <h6>TBD</h6> : <h6>Deadline: {this.props.jobDetailsAdditional.deadline.split('T')[0]}</h6>
+                  }
                   <a href={'http://' + this.props.jobDetailsAdditional.url} target="_blank">Job Application Link</a>
                 </div>
               </div>

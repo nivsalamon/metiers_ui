@@ -13,6 +13,15 @@ class Notes extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillMount() {
+    const context = this;
+    axios.post('http://localhost:3003/jobDetail', {
+      jobId: context.props.jobDetailsAdditional.job_id
+    }).then((res) => {
+      context.props.jobDetailsAction(res.data[0]);
+    })
+  }
+
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -29,6 +38,7 @@ class Notes extends Component {
       jobId: this.state.jobId,
       jobNotes: this.state.jobNotes
     })
+
   }
 
   render() {
