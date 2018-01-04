@@ -4,15 +4,15 @@ import axios from 'axios';
 import moment from 'moment';
 import Job from './Job';
 import Company from './Company';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
 import './manual.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class Manual extends Component {
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       job: {
         title: '',
         description: '',
@@ -36,12 +36,13 @@ class Manual extends Component {
       },
       dashboardRedirect: false
     };
-
+    
+    this.state = this.initialState;
     this.jobInputChange = this.jobInputChange.bind(this);
     this.companyInputChange = this.companyInputChange.bind(this);
     this.dateChange = this.dateChange.bind(this);
     this.linkChecker = this.linkChecker.bind(this); 
-    this.removeModal = this.removeModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.jobFormSubmit = this.jobFormSubmit.bind(this);
   }
 
@@ -103,8 +104,17 @@ class Manual extends Component {
     }
   }
 
-  removeModal() {
-    this.setState({dashboardRedirect: true});
+  closeModal() {
+    var context = this;
+
+    axios.post(`http://localhost:3003/dashboard`, {
+      id: this.props.auth.user.id,
+    }).then((res) => {
+      context.props.dashboardAction(res.data);
+      if (context.props.dashboardLoad) {
+        this.setState({dashboardRedirect: true});
+      }
+    })
   }
 
   jobFormSubmit(e) {
@@ -215,7 +225,7 @@ class Manual extends Component {
                     <Link to="/home/enter-job" href="/home/enter-job" className="btn btn-secondary" data-dismiss="modal">
                       Add Another Job Lead
                     </Link>
-                    <button type="button" className="btn btn-job-form" onClick={this.removeModal} data-dismiss="modal">
+                    <button type="button" className="btn btn-job-form" onClick={this.closeModal} data-dismiss="modal">
                       Go to Dashboard
                     </button>
                   </div>
@@ -229,8 +239,9 @@ class Manual extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {auth: state.auth}
-}
+// const mapStateToProps = (state) => {
+//   return {auth: state.auth}
+// }
 
-export default connect(mapStateToProps)(Manual);
+// export default connect(mapStateToProps)(Manual);
+export default Manual;
