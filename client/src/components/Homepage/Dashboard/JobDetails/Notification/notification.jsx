@@ -47,7 +47,7 @@ class Notification extends Component {
     } else {
     axios.post('http://localhost:3003/addNotification', {
       jobId: this.props.jobId,
-        NotificationDateTime: this.state.NotificationDateTime,
+        NotificationDateTime: this.state.NotificationDateTime.format('YYYY/MM/DD HH:mm:ss'),
         NotificationMessage: this.state.NotificationMessage,
         NotificationName: this.state.NotificationName
       }).then((res) => {
