@@ -44,15 +44,15 @@ class Login extends React.Component {
       <div className="container">
         <div className="row justify-content-md-center">
           <div className="col-md-5">
-            <form>
+            <form onSubmit={this.loginSubmit}>
               <label className="push-top-sm-xs">Login</label>
               <input placeholder="Email" className="form-control" name="email" onChange={this.handleChange.bind(this)}/>
               <label className="push-top-sm-xs">Password</label>
               <input placeholder="Password" className="form-control" type="password" name="password" onChange={this.handleChange.bind(this)}/>
+              { this.state.errors && <div className="alert alert-danger push-top-sm">Invalid Credentials.</div> }
+              <button type="Submit" className="btn btn-primary push-top-sm-xs">Login</button>
+              <Link to="/signup" href="/signup" className="btn btn-info push-top-sm-xs push-left-sm">Sign Up</Link>
             </form>
-             { this.state.errors && <div className="alert alert-danger push-top-sm">Invalid Credentials.</div> }
-            <button className="btn btn-primary push-top-sm-xs" onClick={this.loginSubmit}>Login</button>
-            <Link to="/signup" href="/signup" className="btn btn-info push-top-sm-xs push-left-sm">Sign Up</Link>
           </div>
         </div>
       </div>
