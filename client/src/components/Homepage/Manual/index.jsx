@@ -37,7 +37,7 @@ class Manual extends Component {
       dashboardRedirect: false
     };
     
-    this.initialState = this.state;
+    this.getInitialState = this.getInitialState.bind(this);
     this.jobInputChange = this.jobInputChange.bind(this);
     this.companyInputChange = this.companyInputChange.bind(this);
     this.dateChange = this.dateChange.bind(this);
@@ -45,6 +45,33 @@ class Manual extends Component {
     this.resetState = this.resetState.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.jobFormSubmit = this.jobFormSubmit.bind(this);
+  }
+
+  getInitialState() {
+    return {
+      job: {
+        title: '',
+        description: '',
+        notes: '',
+        source: '',
+        status: 'Will Apply',
+        ranking: '5',
+        deadline: moment(),
+        link: '',
+        createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+      },
+      company: {
+        name: '',
+        description: '',
+        phone: '',
+        address1: '',
+        address2: '',
+        city: '',
+        state: '',
+        zip: '',
+      },
+      dashboardRedirect: false
+    }
   }
 
   jobInputChange(key, e) {
@@ -106,8 +133,14 @@ class Manual extends Component {
   }
 
   resetState() {
-    console.log('im clicking')
-    this.setState(this.initialState);
+    const context = this;
+    this.setState(this.getInitialState());
+
+    axios.post(`http://localhost:3003/dashboard`, {
+      id: this.props.auth.user.id,
+    }).then((res) => {
+      context.props.dashboardAction(res.data);
+    })
   }
 
   closeModal() {
@@ -136,12 +169,7 @@ class Manual extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-    console.log('this.props= ', this.props.history)
-    if(this.state.dashboardRedirect){
-=======
     if (this.state.dashboardRedirect) {
->>>>>>> [add]
       return <Redirect to="/home" />
     }
     return (
