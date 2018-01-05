@@ -10,8 +10,12 @@ const InitialInfo = (props) => {
           <div className="job-details-headers">{props.jobDetailsAdditional.job_title_name}</div>
         </div>
         <div className="col-md-6">
-          {/* <h6 className="job-details-headers">Deadline</h6> */}
-          {/* <div>Deadline</div> */}
+          <h6 className="job-details-headers">Deadline</h6>
+          {
+            props.jobDetailsAdditional.deadline === '' ?
+            <div className="job-details-headers">TBD</div> :
+            <div className="job-details-headers">{props.jobDetailsAdditional.deadline.split('T')[0]}</div>
+          }
         </div>
       </div>
       <div className="row">

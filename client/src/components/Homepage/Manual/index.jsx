@@ -4,8 +4,8 @@ import axios from 'axios';
 import moment from 'moment';
 import Job from './Job';
 import Company from './Company';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
 import './manual.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -36,13 +36,42 @@ class Manual extends Component {
       },
       dashboardRedirect: false
     };
-
+    
+    this.getInitialState = this.getInitialState.bind(this);
     this.jobInputChange = this.jobInputChange.bind(this);
     this.companyInputChange = this.companyInputChange.bind(this);
     this.dateChange = this.dateChange.bind(this);
-    this.linkChecker = this.linkChecker.bind(this); 
-    this.removeModal = this.removeModal.bind(this);
+    this.linkChecker = this.linkChecker.bind(this);
+    this.resetState = this.resetState.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.jobFormSubmit = this.jobFormSubmit.bind(this);
+  }
+
+  getInitialState() {
+    return {
+      job: {
+        title: '',
+        description: '',
+        notes: '',
+        source: '',
+        status: 'Will Apply',
+        ranking: '5',
+        deadline: moment(),
+        link: '',
+        createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+      },
+      company: {
+        name: '',
+        description: '',
+        phone: '',
+        address1: '',
+        address2: '',
+        city: '',
+        state: '',
+        zip: '',
+      },
+      dashboardRedirect: false
+    }
   }
 
   jobInputChange(key, e) {
@@ -103,8 +132,28 @@ class Manual extends Component {
     }
   }
 
-  removeModal() {
-    this.setState({dashboardRedirect: true});
+  resetState() {
+    const context = this;
+    this.setState(this.getInitialState());
+
+    axios.post(`http://localhost:3003/dashboard`, {
+      id: this.props.auth.user.id,
+    }).then((res) => {
+      context.props.dashboardAction(res.data);
+    })
+  }
+
+  closeModal() {
+    var context = this;
+
+    axios.post(`http://localhost:3003/dashboard`, {
+      id: this.props.auth.user.id,
+    }).then((res) => {
+      context.props.dashboardAction(res.data);
+      if (context.props.dashboardLoad) {
+        this.setState({dashboardRedirect: true});
+      }
+    })
   }
 
   jobFormSubmit(e) {
@@ -120,8 +169,7 @@ class Manual extends Component {
   }
 
   render() {
-    console.log('this.props= ', this.props.history)
-    if(this.state.dashboardRedirect){
+    if (this.state.dashboardRedirect) {
       return <Redirect to="/home" />
     }
     return (
@@ -208,10 +256,10 @@ class Manual extends Component {
                     <p>Successfully Added Job Lead!</p>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/home/enter-job" href="/home/enter-job" className="btn btn-secondary" data-dismiss="modal">
+                    <Link to="/home/enter-job" href="/home/enter-job" className="btn btn-secondary" onClick={this.resetState} data-dismiss="modal">
                       Add Another Job Lead
                     </Link>
-                    <button type="button" className="btn btn-job-form" onClick={this.removeModal} data-dismiss="modal">
+                    <button type="button" className="btn btn-job-form" onClick={this.closeModal} data-dismiss="modal">
                       Go to Dashboard
                     </button>
                   </div>
@@ -225,8 +273,9 @@ class Manual extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {auth: state.auth}
-}
+// const mapStateToProps = (state) => {
+//   return {auth: state.auth}
+// }
 
-export default connect(mapStateToProps)(Manual);
+// export default connect(mapStateToProps)(Manual);
+export default Manual;

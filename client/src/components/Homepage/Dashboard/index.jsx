@@ -7,7 +7,7 @@ import Applied from '../../../containers/appliedContainer';
 import FollowUp from '../../../containers/followUpContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
 import Cards from '../../../containers/cardsContainer';
-import Manual from '../Manual';
+import Manual from '../../../containers/manualContainer';
 import Info from '../../../containers/JobDetails/jobDetailsPropsContainer';
 import Search from '../../../containers/Search/searchContainer';
 import { logout } from '../../../actions/authActions';
