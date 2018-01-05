@@ -13,13 +13,16 @@ class Notes extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount() {
+  componentDidUpdate(prevProps) {
     const context = this;
-    axios.post('http://localhost:3003/jobDetail', {
-      jobId: context.props.jobDetailsAdditional.job_id
-    }).then((res) => {
-      context.props.jobDetailsAction(res.data[0]);
-    })
+
+    if (prevProps.jobDetailsAdditional.job_notes !== this.state.jobNotes) {
+      axios.post('http://localhost:3003/jobDetail', {
+        jobId: this.state.jobId
+      }).then((res) => {
+        context.props.jobDetailsAction(res.data[0]);
+      })
+    }
   }
 
   handleUserInput(e) {
@@ -38,7 +41,6 @@ class Notes extends Component {
       jobId: this.state.jobId,
       jobNotes: this.state.jobNotes
     })
-
   }
 
   render() {
