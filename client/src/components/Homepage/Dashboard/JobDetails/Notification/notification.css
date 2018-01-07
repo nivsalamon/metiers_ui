@@ -10,3 +10,11 @@
   min-width:250px;
   cursor:pointer;
 }
+
+.table-row-header{
+  background-color: #8e8e8e;
+  color: #000;
+  font-weight: 400;
+  Letter-spacing: 0px;
+  Text-transform: capitalize;
+}

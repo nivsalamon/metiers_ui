@@ -17,19 +17,18 @@ class WillApply extends React.Component {
     return (
     <div className="container">
       <h2>Will Apply</h2>
-      <table className="table">
+      <table className="table ctable">
         <thead>
-          <tr>
+          <tr className="table-row-header">
             <th>Company</th>
             <th>Job Title</th>
             <th>Job Link</th>
             <th>Personal Rating</th>
             <th>Job Status</th>
-            <th>Expanded Job Details</th>
             <th>Deadline</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="tbody">
           {this.props.dashboardLoad.map((job) => {
             if (job.status === 'Will Apply') {
               return (
@@ -38,10 +37,9 @@ class WillApply extends React.Component {
                   <Link to="/home/job-detail" href="/home/job-detail" job={job}>
                     <td onClick={this.showDetails(job)}>{job.job_title_name}</td>
                   </Link>
-                  <td> <a href={'http://'+job.url !== 'http://' ? 'http://'+job.url : ""} target="_blank">Link</a></td>
-                  <td>{job.rating}</td>
-                  <td>{job.status}</td>
-                  <td>Job expanded link</td>
+                  <td className="td-job-link"> <a href={'http://'+job.url !== 'http://' ? 'http://'+job.url : ""} target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+                  <td className="td-job-rating">{job.rating}</td>
+                  <td className="td-job-status">{job.status}</td>
                   <td>{<TimeAgo date={job.deadline} /> }</td>
                 </tr>
               );

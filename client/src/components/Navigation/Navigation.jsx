@@ -21,20 +21,14 @@ class Navigation extends React.Component {
       <div id="wrapper" className={this.state.active ? 'toggled' : 'notToggled'}>
         <div id="sidebar-wrapper">
           <ul className="sidebar-nav">
-            <li>
-              <Link to="/home" href="/home">Dashboard</Link>
+            <li className="sidebar-brand brand-name">
+              <Link to="/home" href="/home">Metiers</Link>
             </li>
             <li>
-              <Link to="/home/search" href="/home/search">Search</Link>
+              <Link to="/home/search" href="/home/search"><i className="fa fa-search" aria-hidden="true"></i></Link>
             </li>
             <li>
-              <Link to="/home/enter-job" href="/home/enter-job">Enter Job</Link>
-            </li>
-            <li>
-              <Link to="/login" href="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup" href="/signup">Sign Up</Link>
+              <Link to="/home/enter-job" href="/home/enter-job"><i className="fa fa-briefcase" aria-hidden="true"></i></Link>
             </li>
           </ul>
         </div>

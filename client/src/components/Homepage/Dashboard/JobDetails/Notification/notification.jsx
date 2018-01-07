@@ -86,7 +86,7 @@ class Notification extends Component {
         <div className="row">
           <div className="offset-md-1 col-md-10 offset-md-1">
             <h3>Add a Notification</h3>
-            <label>Notification Date &amp; Time</label> <span className="must-have">*</span>
+            <label className="notifications-label">Notification Date &amp; Time</label> <span className="must-have">*</span>
             
             <DatePicker
               className="form-control date_time_picker"
@@ -101,11 +101,11 @@ class Notification extends Component {
         </div>
         <div className="row">
           <div className="offset-md-1 col-md-10 offset-md-1 push-top-sm">
-            <label>Notification Title</label> <span className="must-have">*</span>
+            <label className="notifications-label">Notification Title</label> <span className="must-have">*</span>
             <textarea className="form-control" name="NotificationName" placeholder="Title" onChange={this.handleUserInput}></textarea>
           </div>
           <div className="offset-md-1 col-md-10 offset-md-1 push-top-sm">
-            <label>Notification Message</label> <span className="must-have">*</span>
+            <label className="notifications-label">Notification Message</label> <span className="must-have">*</span>
             <textarea className="form-control" name="NotificationMessage" placeholder="Message" onChange={this.handleUserInput}></textarea>
           </div>
           <div className="offset-md-1 col-md-10 offset-md-1 push-top-sm">
@@ -114,21 +114,21 @@ class Notification extends Component {
           </div>
           <div className="offset-md-1 col-md-10 offset-md-1 push-top">
           
-          { JSON.stringify(this.state.notifications) === JSON.stringify([]) ? <h3>No Notifications Added</h3> : 
+          { JSON.stringify(this.state.notifications) === JSON.stringify([]) ? <h3 id="no-notifications-header">No Notifications Added</h3> : 
           <table className="table">
             <thead>
-              <tr>
+              <tr className="table-row-header">
                 <th>Notification Title</th>
                 <th>Date</th>
                 <th>Notification Message</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="tbody">
                 {this.state.notifications.map((notification) => {
                   return (
                     <tr key={notification.id}>
                       <td>{notification.name}</td>
-                      <td>{notification.notifyOn}</td>
+                      <td>{JSON.stringify(notification.notifyOn.split('T')[0]).replace(/"/g,"")}</td>
                       <td>{notification.notes}</td>
                     </tr>
                   );
@@ -149,8 +149,7 @@ class Notification extends Component {
                     <p>Successfully Added Notification!</p>
                     <p>Title: {this.state.NotificationName}</p>
                     <p>Message: {this.state.NotificationMessage}</p>
-                    <p>Date:
-                      &nbsp; 
+                    <p>Date:{'\u00A0'}            
                       {JSON.stringify(this.state.NotificationDateTime._d).split('T')[0].replace(/"/g,"").split('-')[1]}-
                       {JSON.stringify(this.state.NotificationDateTime._d).split('T')[0].replace(/"/g,"").split('-')[2]}-
                       {JSON.stringify(this.state.NotificationDateTime._d).split('T')[0].replace(/"/g,"").split('-')[0]}

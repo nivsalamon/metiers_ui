@@ -6,7 +6,7 @@ const EditCompanyInfo = (props) => {
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label>Name</label><span className="must-have">*</span>
+            <label className="edit-company-label">Name</label>{'\u00A0'}<span className="must-have">*</span>
             <input
               type="text"
               className="form-control"
@@ -19,7 +19,7 @@ const EditCompanyInfo = (props) => {
         </div>
         <div className="col-md-6">
           <div className="form-group">
-            <label>Phone Number</label>
+            <label className="edit-company-label">Phone Number</label>
             <input
               type="text"
               className="form-control"
@@ -32,7 +32,7 @@ const EditCompanyInfo = (props) => {
         </div>
       </div>
       <div className="form-group">
-        <label>Address 1</label>
+        <label className="edit-company-label">Address 1</label>
         <input
           type="text"
           className="form-control"
@@ -43,7 +43,7 @@ const EditCompanyInfo = (props) => {
         />
       </div>
       <div className="form-group">
-        <label>Address 2</label>
+        <label className="edit-company-label">Address 2</label>
         <input
           type="text"
           className="form-control"
@@ -56,7 +56,7 @@ const EditCompanyInfo = (props) => {
       <div className="row">
         <div className="col-md-4">
           <div className="form-group">
-            <label>City</label>
+            <label className="edit-company-label">City</label>
             <input
               type="text"
               className="form-control"
@@ -69,7 +69,7 @@ const EditCompanyInfo = (props) => {
         </div>
         <div className="col-md-4">
           <div className="form-group">
-            <label>State</label>
+            <label className="edit-company-label">State</label>
             <select
               className="form-control"
               id="companyStateSelect"
@@ -131,7 +131,7 @@ const EditCompanyInfo = (props) => {
         </div>
         <div className="col-md-4">
           <div className="form-group">
-            <label>ZIP Code</label>
+            <label className="edit-company-label">ZIP Code</label>
             <input
               type="text"
               className="form-control"
@@ -144,7 +144,7 @@ const EditCompanyInfo = (props) => {
         </div>
       </div>
       <div className="form-group text-area">
-        <label>Description</label>
+        <label className="edit-company-label">Description</label>
         <textarea
           className="form-control"
           id="notesInput"

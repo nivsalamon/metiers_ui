@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { NavLink, Link, Switch, Route, Redirect } from 'react-router-dom';
 import Ripple from '../../Search/Ripple.svg';
 import ActivityLog from '../../../../containers/JobDetails/activityLogContainer';
 import Info from './Info';
@@ -73,35 +73,37 @@ class JobDetail extends Component {
         {this.state.toggle === false ?
           (<div className="container push-top-sm">
             <div className="row justify-content-md-center text-center">
-              <div className="col-md-4">
-                <div className="left-align">
-                  <h4>{this.props.jobDetailsAdditional.company_name} - {this.props.jobDetailsAdditional.job_title_name}</h4>
-                  <h5>{this.props.jobDetailsAdditional.status}</h5>
-                  <h5>Ranking: {this.props.jobDetailsAdditional.ranking}</h5>
-                  {/* <h6>Deadline: {this.props.jobDetails.deadline.split('T')[0]}</h6> */}
-                  <a href={'http://' + this.props.jobDetailsAdditional.url} target="_blank">Job Application Link</a>
+              <div className="col-md-5">
+                <div className="job-detail-top-info">
+                  <div className="left-align">
+                    <h4>{this.props.jobDetailsAdditional.company_name} - {this.props.jobDetailsAdditional.job_title_name}</h4>
+                    <h5>{this.props.jobDetailsAdditional.status}</h5>
+                    <h5>Ranking: {this.props.jobDetailsAdditional.ranking}</h5>
+                    {/* <h6>Deadline: {this.props.jobDetails.deadline.split('T')[0]}</h6> */}
+                    <a href={'http://' + this.props.jobDetailsAdditional.url} target="_blank">Job Application Link</a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="row push-bottom-sm push-top-sm justify-content-md-center text-center">
+            <div className="row push-top-sm justify-content-md-center text-center">
               <div className="col-md-3">
                 <div className="job-tab-detail">
-                  <Link to="/home/job-detail" href="/home/job-detail">Info</Link>
+                  <NavLink to="/home/job-detail" href="/home/job-detail">Info</NavLink>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="job-tab-detail">
-                  <Link to="/home/job-detail/notes" href="/home/job-detail/notes">Notes</Link>
+                  <NavLink to="/home/job-detail/notes" activeClassName="job-details-selected" href="/home/job-detail/notes">Notes</NavLink>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="job-tab-detail">
-                  <Link to="/home/job-detail/notifications" href="/home/job-detail/notifications">Notifications</Link>
+                  <NavLink to="/home/job-detail/notifications" activeClassName="job-details-selected" href="/home/job-detail/notifications">Notifications</NavLink>
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="job-tab-detail">
-                  <Link to="/home/job-detail/activity-log" href="/home/job-detail/activity-log">Activity Log</Link>
+                  <NavLink to="/home/job-detail/activity-log" activeClassName="job-details-selected" href="/home/job-detail/activity-log">Activity Log</NavLink>
                 </div>
               </div>
             </div>

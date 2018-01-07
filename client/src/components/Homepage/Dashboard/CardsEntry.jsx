@@ -15,6 +15,11 @@ class CardsEntry extends React.Component {
   }
 
   render() {
+
+    const stars = [];
+    const star = <i className="fa fa-star" aria-hidden="true"></i>;
+    for(var i = 0; i < this.props.job.rating; i++) {stars.push(star);}
+
     return (
       <div className="card-wrapper">
         <div className="card-inner">
@@ -23,7 +28,10 @@ class CardsEntry extends React.Component {
             <h6 className="job_title" onClick={this.showDetails}>{this.props.job.job_title_name}</h6>
           </Link>
           <a className="original_job_url" href={'http://' + this.props.job.url !== 'http://' ? 'http://' + this.props.job.url : ""} target="_blank">Job Application</a>
-          <p className="personal_rating">Rating: {this.props.job.rating}</p>
+          
+          <p className="personal_rating">Rating: {stars}
+          </p>
+
           <p className="job_status">Status: {this.props.job.status}</p>
           <p className="job_deadline">Deadline: {<TimeAgo date={this.props.job.deadline} /> } </p>
           <div className="last_applied">

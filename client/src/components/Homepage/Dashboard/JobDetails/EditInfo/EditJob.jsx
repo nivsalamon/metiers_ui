@@ -3,11 +3,11 @@ import DatePicker from 'react-datepicker';
 
 const EditJobInfo = (props) => {
   return (
-    <div className="container">
+    <div>
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label>Title</label><span className="must-have">*</span>
+            <label className="edit-job-label">Title</label><span className="must-have">*</span>
             <input
               type="text"
               className="form-control"
@@ -20,7 +20,7 @@ const EditJobInfo = (props) => {
         </div>
         <div className="col-md-6">
           <div className="form-group">
-            <label>Deadline</label>
+            <label className="edit-job-label">Deadline</label>
             <DatePicker
               className="form-control"
               id="jobDeadlineSelect"
@@ -34,7 +34,7 @@ const EditJobInfo = (props) => {
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label>Current Status</label><span className="must-have">*</span>
+            <label className="edit-job-label">Current Status</label><span className="must-have">*</span>
             <select
               className="form-control"
               id="jobStatusSelect"
@@ -49,7 +49,7 @@ const EditJobInfo = (props) => {
         </div>
         <div className="col-md-6">
           <div className="form-group">
-            <label>Ranking: 5 being your dream job</label>
+            <label className="edit-job-label">Ranking: 5 being your dream job</label>
             <select
               className="form-control"
               id="jobRankingSelect"
@@ -66,7 +66,7 @@ const EditJobInfo = (props) => {
         </div>
       </div>
       <div className="form-group text-area">
-        <label>Description</label>
+        <label className="edit-job-label">Description</label>
         <textarea
           className="form-control"
           id="descriptionInput"
@@ -79,7 +79,7 @@ const EditJobInfo = (props) => {
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label>Source</label>
+            <label className="edit-job-label">Source</label>
             <input
               type="text"
               className="form-control"
@@ -92,7 +92,7 @@ const EditJobInfo = (props) => {
         </div>
         <div className="col-md-6">
           <div className="form-group">
-            <label>Job Application URL</label>
+            <label className="edit-job-label">Job Application URL</label>
             <input
               type="text"
               className="form-control"
@@ -104,6 +104,20 @@ const EditJobInfo = (props) => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      <div className="form-group text-area">
+        <label className="edit-job-label">Notes</label>
+        <textarea
+          className="form-control"
+          id="notesInput"
+          rows="3"
+          placeholder="Notes for this job"
+          value={props.job['notes']}
+          onChange={props.jobInputChange.bind(this, 'notes')}
+        />
+      </div>
+>>>>>>> CSS WIP
     </div>
   );
 };

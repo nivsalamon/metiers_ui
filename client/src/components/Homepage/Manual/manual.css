@@ -1,6 +1,7 @@
 .card-header {
   background-color: #0E0E52;
   color: #ffffff;
+  cursor:pointer;
 }
 
 .char-count {
@@ -18,6 +19,8 @@
 
 .btn-job-form:hover {
   color: #fff;
+  background-color:#000;
+  transition: 0.5s ease;
   cursor: pointer;
 }
 
