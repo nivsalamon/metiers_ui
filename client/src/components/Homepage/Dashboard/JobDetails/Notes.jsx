@@ -13,18 +13,6 @@ class Notes extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    const context = this;
-
-    if (prevProps.jobDetailsAdditional.job_notes !== this.state.jobNotes) {
-      axios.post('http://localhost:3003/jobDetail', {
-        jobId: this.state.jobId
-      }).then((res) => {
-        context.props.jobDetailsAction(res.data[0]);
-      })
-    }
-  }
-
   handleUserInput(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -40,6 +28,15 @@ class Notes extends Component {
     axios.post('http://localhost:3003/editNotes', {
       jobId: this.state.jobId,
       jobNotes: this.state.jobNotes
+    }).then(() => {
+      console.log('I just updated notes in DB')
+
+      axios.post('http://localhost:3003/jobDetail', {
+        jobId: context.state.jobId
+      }).then((res) => {
+        console.log('I just did post to DB to get new data for Redux, here it is', res.data[0])
+        context.props.jobDetailsAction(res.data[0]);
+      })
     })
   }
 
