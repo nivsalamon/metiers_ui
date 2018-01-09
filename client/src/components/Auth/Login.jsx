@@ -45,8 +45,7 @@ class Login extends React.Component {
       <div className="container">
         <div className="row justify-content-md-center">
           <div className="col-md-5">
-<<<<<<< HEAD
-            <form onSubmit={this.loginSubmit}>
+            <form onSubmit={this.loginSubmit} className="auth-form">
               <label className="push-top-sm-xs">Login</label>
               <input placeholder="Email" className="form-control" name="email" onChange={this.handleChange.bind(this)}/>
               <label className="push-top-sm-xs">Password</label>
@@ -55,18 +54,6 @@ class Login extends React.Component {
               <button type="Submit" className="btn btn-primary push-top-sm-xs">Login</button>
               <Link to="/signup" href="/signup" className="btn btn-info push-top-sm-xs push-left-sm">Sign Up</Link>
             </form>
-=======
-            <h2 className="auth-header">Login</h2>
-              <form className="auth-form">
-                <label className="push-top-sm-xs">Email</label>
-                <input placeholder="Email" className="form-control" name="email" onChange={this.handleChange.bind(this)}/>
-                <label>Password</label>
-                <input placeholder="Password" className="form-control" type="password" name="password" onChange={this.handleChange.bind(this)}/>
-              </form>
-              { this.state.errors && <div className="alert alert-danger push-top-sm">Invalid Credentials.</div> }
-              <button className="btn btn-primary push-top-sm-xs" onClick={this.loginSubmit}>Login</button>
-              <Link to="/signup" href="/signup" className="btn btn-info push-top-sm-xs push-left-sm">Sign Up</Link>
->>>>>>> CSS WIP
           </div>
         </div>
       </div>

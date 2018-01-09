@@ -33,7 +33,7 @@ class CardsEntry extends React.Component {
     }
 
     if(today.getMonth()+1 < 10){
-      tempMonth = (today.getMonth()+1).toString();
+      tempMonth = ('0' + (today.getMonth()+1)).toString();
       console.log('today.getMonth()+1:', today.getMonth()+1)
     } else {
       tempDate = today.getMonth().toString();
@@ -75,8 +75,8 @@ class CardsEntry extends React.Component {
 
           <p className="job_status">Status: {this.props.job.status}</p>
           {/* <p className="job_deadline">Deadline: {<TimeAgo date={this.props.job.deadline} /> } </p> */}
-          <div>ONE{this.state.currdate}</div>
-          <div>job.created_date {this.props.job.created_date.split('T')[0]}</div>
+          {/* <div>ONE{this.state.currdate}</div>
+          <div>job.created_date {this.props.job.created_date.split('T')[0]}</div> */}
           <div className="last_applied">
           <h6 className="last_applied_text">Created: { this.state.currdate == this.props.job.created_date.split('T')[0] ? 'Today' : <TimeAgo date={this.props.job.created_date} />}</h6>
           </div>
