@@ -39,6 +39,18 @@ class EditInfo extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
+  componentWillMount() {
+    const oldJob = this.state['job'];
+    const newJob = this.state['job'];
+    newJob['deadline'] = moment();
+
+    if (this.state.job.deadline === '' || this.state.job.deadline === null) {
+      this.setState({
+        oldJob: newJob,
+      })
+    }
+  }
 
   jobInputChange(key, e) {
     const oldJob = this.state['job'];
@@ -101,6 +113,10 @@ class EditInfo extends Component {
     }).then((res) => {
       console.log('Successfully post to DB', res);
     })
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   render() {
