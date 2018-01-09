@@ -2,12 +2,53 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TimeAgo from 'react-timeago';
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
-
+import moment from 'moment';
 
 class CardsEntry extends React.Component {
   constructor(props) {
     super(props);
     this.showDetails = this.showDetails.bind(this);
+    this.checkTimeForUTC = this.checkTimeForUTC.bind(this);
+    this.state = {
+      currdate: '',
+    }
+  }
+
+  componentDidMount(){
+    this.checkTimeForUTC();
+  }
+
+  checkTimeForUTC() {
+    var today = new Date();
+    // var currdate = '';
+  
+    // var currdate = today.getFullYear().toString() + '-' + (today.getMonth()).toString() + '-' + (today.getDate()).toString()
+    var tempDate = '';
+    var tempMonth = '';
+
+    if(today.getDate() < 10){
+      tempDate = ('0' + today.getDate()).toString();
+    } else {
+      tempDate = today.getDate().toString();
+    }
+
+    if(today.getMonth()+1 < 10){
+      tempMonth = (today.getMonth()+1).toString();
+      console.log('today.getMonth()+1:', today.getMonth()+1)
+    } else {
+      tempDate = today.getMonth().toString();
+    }
+
+    if (today.getHours() >= 16) {
+      var temp = today.getFullYear().toString() + '-' + tempMonth + '-' + tempDate;
+      this.setState({currdate:temp});
+    } else {
+      var temp = today.getFullYear().toString() + '-' + tempMonth + '-' + tempDate;
+      this.setState({currdate:temp});
+    }
+    console.log('TEMPDATE ', tempDate);
+    console.log('TEMPMONTH ', tempMonth);
+
   }
 
   showDetails() {
@@ -15,10 +56,10 @@ class CardsEntry extends React.Component {
   }
 
   render() {
-
     const stars = [];
-    const star = <i className="fa fa-star" aria-hidden="true"></i>;
-    for(var i = 0; i < this.props.job.rating; i++) {stars.push(star);}
+    for(var i = 0; i < this.props.job.rating; i++) {
+      stars.push(<i className="fa fa-star" aria-hidden="true" key={i}></i>);
+    }
 
     return (
       <div className="card-wrapper">
@@ -29,13 +70,15 @@ class CardsEntry extends React.Component {
           </Link>
           <a className="original_job_url" href={'http://' + this.props.job.url !== 'http://' ? 'http://' + this.props.job.url : ""} target="_blank">Job Application</a>
           
-          <p className="personal_rating">Rating: {stars}
+          <p className="personal_rating">Ranking: {stars}
           </p>
 
           <p className="job_status">Status: {this.props.job.status}</p>
-          <p className="job_deadline">Deadline: {<TimeAgo date={this.props.job.deadline} /> } </p>
+          {/* <p className="job_deadline">Deadline: {<TimeAgo date={this.props.job.deadline} /> } </p> */}
+          <div>ONE{this.state.currdate}</div>
+          <div>job.created_date {this.props.job.created_date.split('T')[0]}</div>
           <div className="last_applied">
-          <h6 className="last_applied_text">Created: {<TimeAgo date={this.props.job.created_date} /> }</h6>
+          <h6 className="last_applied_text">Created: { this.state.currdate == this.props.job.created_date.split('T')[0] ? 'Today' : <TimeAgo date={this.props.job.created_date} />}</h6>
           </div>
         </div>
       </div>

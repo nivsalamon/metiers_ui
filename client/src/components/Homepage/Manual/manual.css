@@ -19,6 +19,7 @@
 
 .btn-job-form:hover {
   color: #fff;
+  border-color:#000;
   background-color:#000;
   transition: 0.5s ease;
   cursor: pointer;

@@ -16,7 +16,7 @@ class WillApply extends React.Component {
   render() {
     return (
     <div className="container">
-      <h2>Will Apply</h2>
+      <h2 className="push-top">Will Apply</h2>
       <table className="table ctable">
         <thead>
           <tr className="table-row-header">
@@ -37,7 +37,7 @@ class WillApply extends React.Component {
                   <Link to="/home/job-detail" href="/home/job-detail" job={job}>
                     <td onClick={this.showDetails(job)}>{job.job_title_name}</td>
                   </Link>
-                  <td className="td-job-link"> <a href={'http://'+job.url !== 'http://' ? 'http://'+job.url : ""} target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+                  <td className="td-job-link"> <a href={'http://'+job.url !== 'http://' ? 'http://'+job.url : ""} target="_blank"><i className="fa fa-external-link" aria-hidden="true"></i></a></td>
                   <td className="td-job-rating">{job.rating}</td>
                   <td className="td-job-status">{job.status}</td>
                   <td>{<TimeAgo date={job.deadline} /> }</td>

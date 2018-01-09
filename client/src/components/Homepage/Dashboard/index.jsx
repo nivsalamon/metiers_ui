@@ -101,26 +101,7 @@ class Home extends React.Component {
                   <h3>{this.capitalize(this.props.auth.user.firstName)} {this.capitalize(this.props.auth.user.lastName)}</h3>
                 </div>
                 <div className="col-md-1">
-                  <a href="#" onClick={this.logoutHandler.bind(this)}>Logout</a>
-                </div>
-              </div>
-            </div>
-            <div className="container push-bottom status-headers-wrapper">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="job-tab">
-                    <NavLink to="/home/will-apply" activeClassName="selected" href="/home/will-apply">Will Apply</NavLink>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="job-tab">
-                    <NavLink to="/home/applied" activeClassName="selected" href="/home/applied">Applied</NavLink>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="job-tab">
-                    <NavLink to="/home/follow-up" activeClassName="selected" href="/home/follow-up">Follow-Up</NavLink>
-                  </div>
+                  <a href="#" id="logout-btn" onClick={this.logoutHandler.bind(this)}>Logout</a>
                 </div>
               </div>
             </div>

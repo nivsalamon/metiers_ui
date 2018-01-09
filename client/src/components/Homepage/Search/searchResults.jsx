@@ -72,10 +72,13 @@ class SearchResults extends React.Component {
               <h6 className='center'>Could not find anything</h6>
             ) :
               <div>
-                {this.props.searchResults.map((job, i) => (
-                  <SearchResultsEntry job={job} key={i} saveOrDeleteJob={this.props.saveOrDeleteJob}/>
-                ))}
-              </div> 
+                <h6>An already saved job will have a checkmark pre-checked.<br/> Uncheck and submit that job if you'd like to remove it.</h6>
+                <div>
+                  {this.props.searchResults.map((job, i) => (
+                    <SearchResultsEntry job={job} key={i} saveOrDeleteJob={this.props.saveOrDeleteJob}/>
+                  ))}
+                </div> 
+              </div>
             }
           </div>
         </div>

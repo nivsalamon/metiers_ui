@@ -18,3 +18,7 @@
   Letter-spacing: 0px;
   Text-transform: capitalize;
 }
+
+.table thead th {
+  font-weight:400;
+}

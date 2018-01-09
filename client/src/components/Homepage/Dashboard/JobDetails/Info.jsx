@@ -9,9 +9,9 @@ class Info extends Component {
 
   render() {
     return (
-      <div>
+      <div id="edit-info-link-wrapper">
         <Link to="/home/job-detail/edit-info" href="/home/job-detail/edit-info" className="btn btn-primary">
-          Edit
+          Edit Info
         </Link>
         <InitialInfo />
       </div>
