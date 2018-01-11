@@ -8,7 +8,6 @@ const savedSearchedJobsReducer = (state = [], action) => {
     return action.payload;
   }
   if (action.type === "REFRESH_JOBS") {
-    console.log('THIS SHOULD BE HITTING')
     return action.payload;
   }
   return state;

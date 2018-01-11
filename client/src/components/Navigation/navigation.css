@@ -12,16 +12,16 @@ body {
 }
 
 #wrapper.toggled {
-  padding-left: 120px;
+  padding-left: 180px;
 }
 
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
-  left: 120px;
+  left: 180px;
   width: 0;
   height: 100%;
-  margin-left: -120px;
+  margin-left: -180px;
   overflow-y: auto;
   background: #000;
   -webkit-transition: all 0.5s ease;
@@ -31,7 +31,7 @@ body {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-  width: 120px;
+  width: 180px;
 }
 
 #page-content-wrapper {
@@ -43,7 +43,7 @@ body {
 
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
-  margin-right: -120px;
+  margin-right: -180px;
 }
 
 
@@ -52,7 +52,7 @@ body {
 .sidebar-nav {
   position: absolute;
   top: 0;
-  width: 120px;
+  width: 180px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -81,6 +81,7 @@ body {
 
 .sidebar-nav>.sidebar-brand {
   height: 65px;
+  margin-left:20px;
   font-size: 18px;
   line-height: 60px;
 }
@@ -111,13 +112,13 @@ margin-left:10px;
     padding-left: 0;
   }
   #wrapper.toggled {
-    padding-left: 120px;
+    padding-left: 180px;
   }
   #sidebar-wrapper {
     width: 0;
   }
   #wrapper.toggled #sidebar-wrapper {
-    width: 120px;
+    width: 180px;
   }
   #page-content-wrapper {
     padding: 0px;
@@ -151,4 +152,9 @@ margin-left:10px;
   padding-top: 30px;
   background-color:#cacaca;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.nav-text{
+  color:#fff;
+  margin-left:5px;
 }

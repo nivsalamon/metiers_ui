@@ -20,9 +20,6 @@ class CardsEntry extends React.Component {
 
   checkTimeForUTC() {
     var today = new Date();
-    // var currdate = '';
-  
-    // var currdate = today.getFullYear().toString() + '-' + (today.getMonth()).toString() + '-' + (today.getDate()).toString()
     var tempDate = '';
     var tempMonth = '';
 
@@ -34,7 +31,6 @@ class CardsEntry extends React.Component {
 
     if(today.getMonth()+1 < 10){
       tempMonth = ('0' + (today.getMonth()+1)).toString();
-      console.log('today.getMonth()+1:', today.getMonth()+1)
     } else {
       tempDate = today.getMonth().toString();
     }
@@ -46,8 +42,6 @@ class CardsEntry extends React.Component {
       var temp = today.getFullYear().toString() + '-' + tempMonth + '-' + tempDate;
       this.setState({currdate:temp});
     }
-    console.log('TEMPDATE ', tempDate);
-    console.log('TEMPMONTH ', tempMonth);
 
   }
 

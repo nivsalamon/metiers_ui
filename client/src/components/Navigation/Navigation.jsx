@@ -25,10 +25,10 @@ class Navigation extends React.Component {
               <Link to="/home" href="/home">Metiers</Link>
             </li>
             <li>
-              <Link to="/home/search" href="/home/search"><i className="fa fa-search" aria-hidden="true"></i></Link>
+              <Link to="/home/search" href="/home/search"><i className="fa fa-search" aria-hidden="true"></i><span className="nav-text">Search</span></Link>
             </li>
             <li>
-              <Link to="/home/enter-job" href="/home/enter-job"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
+              <Link to="/home/enter-job" href="/home/enter-job"><i className="fa fa-pencil-square-o" aria-hidden="true"></i><span className="nav-text">Enter Job</span></Link>
             </li>
           </ul>
         </div>

@@ -24,8 +24,6 @@ export function login(data) {
       const token = res.data.token;
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
-      console.log('inside Redux')
-      console.log(jwt.decode(token));
       dispatch(setCurrentUser(jwt.decode(token)));
       return res;
     }).catch(err => {

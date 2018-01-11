@@ -12,7 +12,6 @@ class ActivityLogTable extends React.Component {
 
   componentWillMount() {
     const context = this;
-    console.log('client side job id', this.props.job_id);
     axios.post('http://localhost:3003/historyLog', {
       job_id: this.props.job_id
     }).then(function(response) {

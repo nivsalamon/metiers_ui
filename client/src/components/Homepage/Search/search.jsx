@@ -21,9 +21,6 @@ class Search extends React.Component {
     this.handleKeyPressDetails = this.handleKeyPressDetails.bind(this);
   }
 
-  componentDidMount() {
-    console.log('THIS IS MOUTNING')
-  }
   componentWillUnmount() {
     this.props.searchJobs([]);
     this.props.saveOrDeleteSearchedJobs({checked: 'Refresh'}, []);

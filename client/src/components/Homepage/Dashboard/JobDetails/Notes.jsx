@@ -29,12 +29,9 @@ class Notes extends Component {
       jobId: this.state.jobId,
       jobNotes: this.state.jobNotes
     }).then(() => {
-      console.log('I just updated notes in DB')
-
       axios.post('http://localhost:3003/jobDetail', {
         jobId: context.state.jobId
       }).then((res) => {
-        console.log('I just did post to DB to get new data for Redux, here it is', res.data[0])
         context.props.jobDetailsAction(res.data[0]);
       })
     })

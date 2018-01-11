@@ -30,11 +30,6 @@ class ActivityLog extends Component {
     this.addEvent = this.addEvent.bind(this);
   }
 
-  componentWillMount() {
-    console.log('checking jobid', this.props.jobDetailsAdditional.job_id);
-  }
-
-
   handleDateChange (date) {
     this.setState({
       date: date
@@ -55,7 +50,6 @@ class ActivityLog extends Component {
 
   addEvent() {
     const context = this;
-    console.log('this is job id', this.props.jobDetailsAdditional.job_id);
     const data = {      
       job_id: this.props.jobDetailsAdditional.job_id,
       notes: this.state.text,

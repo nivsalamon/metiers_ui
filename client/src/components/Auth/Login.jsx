@@ -25,10 +25,7 @@ class Login extends React.Component {
   loginSubmit(e) {
     e.preventDefault();
     this.props.login(this.state).then((res) => {
-      console.log('res in comp')
-      console.log(res);
       if(res.status === 200){
-        console.log(res.data.token);
         this.setState({loginSuccess: true});
       } else if(res.response.status === 401) {
         this.setState({errors: true});

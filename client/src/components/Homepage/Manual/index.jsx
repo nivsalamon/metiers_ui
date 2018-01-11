@@ -83,8 +83,6 @@ class Manual extends Component {
     this.setState({
       oldJob: newJob,
     });
-
-    console.log(this.state.job);
   }
 
   companyInputChange(key, e) {
@@ -96,8 +94,6 @@ class Manual extends Component {
     this.setState({
       oldCompany: newCompany,
     });
-
-    console.log(this.state.company);
   }
 
   dateChange(date) {

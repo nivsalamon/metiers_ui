@@ -31,15 +31,13 @@ class Notification extends Component {
     this.setState({
       [name]: value,
     });
-    console.log('STATE: ', this.state)
-{      console.log('this.state.NotificationDateTime', this.state.NotificationDateTime)}
+
   }
 
   handleDateChange(e) {
     this.setState({
       NotificationDateTime: e,
     });
-    console.log('STATE: ', this.state)
   }
 
   handleAddNotifications(){
@@ -73,7 +71,6 @@ class Notification extends Component {
     axios.post('http://localhost:3003/getNotifications', {
       jobId: this.props.jobId,
     }).then((res) => {
-      console.log('response', res.data);
       this.setState({notifications: res.data});
     })
   }

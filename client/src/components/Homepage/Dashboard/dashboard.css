@@ -120,6 +120,10 @@ a:hover{
   margin-left:25px;
 }
 
+.job_status{
+  margin-bottom:10px !important;
+}
+
 .job_deadline {
   margin-bottom:10px !important;
 }
