@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import config from '../../../../config'
 import { Link, Redirect } from 'react-router-dom';
 import './Auth.css';
 
@@ -27,7 +28,7 @@ class Signup extends React.Component {
     if( this.state.firstName === '' || this.state.lastName === '' || this.state.email === '' || this.state.password === '' ){
       this.setState({errors:true});
     } else {
-      axios.post('http://localhost:3003/signup', {
+      axios.post(`http://${config.server}:${config.port}/signup`, {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,

@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '../../../../../config';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import SearchResultsEntry from '../../../containers/Search/searchJobDetailActionContainer';
@@ -24,11 +25,11 @@ class SearchResults extends React.Component {
       return;
     }
     const context = this;
-    axios.post('http://localhost:3003/company/search', {
+    axios.post(`http://${config.server}:${config.port}/company/search`, {
       id: context.props.auth.user.id,
       jobs: context.props.savedSearchedJobs,
     }).then(function(response) {
-      axios.post('http://localhost:3003/job/search', {
+      axios.post(`http://${config.server}:${config.port}/job/search`, {
         id: context.props.auth.user.id,
         jobs: context.props.savedSearchedJobs
       }).then(function(response) {
@@ -43,7 +44,7 @@ class SearchResults extends React.Component {
 
   getAllJobsForDashboard() {
     var context = this;
-    axios.post(`http://localhost:3003/dashboard`, {
+    axios.post(`http://${config.server}:${config.port}/dashboard`, {
       id: this.props.auth.user.id,
     }).then((res) => {
       if (res.data.length === 0) {

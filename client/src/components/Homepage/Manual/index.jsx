@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import config from '../../../../../config';
 import axios from 'axios';
 import moment from 'moment';
 import Job from './Job';
 import Company from './Company';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
 import './manual.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -132,7 +131,7 @@ class Manual extends Component {
     const context = this;
     this.setState(this.getInitialState());
 
-    axios.post(`http://localhost:3003/dashboard`, {
+    axios.post(`http://${config.server}:${config.port}/dashboard`, {
       id: this.props.auth.user.id,
     }).then((res) => {
       context.props.dashboardAction(res.data);
@@ -142,7 +141,7 @@ class Manual extends Component {
   closeModal() {
     var context = this;
 
-    axios.post(`http://localhost:3003/dashboard`, {
+    axios.post(`http://${config.server}:${config.port}/dashboard`, {
       id: this.props.auth.user.id,
     }).then((res) => {
       context.props.dashboardAction(res.data);
@@ -155,7 +154,7 @@ class Manual extends Component {
   jobFormSubmit(e) {
     this.linkChecker(this.state.job.link);
 
-    axios.post('http://localhost:3003/manual', {
+    axios.post(`http://${config.server}:${config.port}/manual`, {
       id: this.props.auth.user.id,
       job: this.state.job,
       company: this.state.company,
@@ -269,9 +268,4 @@ class Manual extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {auth: state.auth}
-// }
-
-// export default connect(mapStateToProps)(Manual);
 export default Manual;

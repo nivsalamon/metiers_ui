@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
+import config from '../../../../../../../config';
 import { Link, Switch, Route } from 'react-router-dom';
 import moment from 'moment';
 import axios from 'axios';
@@ -44,7 +45,7 @@ class Notification extends Component {
     if(this.state.NotificationMessage === "" && this.state.NotificationName === "" ){
       this.setState({errors: true});
     } else {
-    axios.post('http://localhost:3003/addNotification', {
+    axios.post(`http://${config.server}:${config.port}/addNotification`, {
       jobId: this.props.jobId,
         NotificationDateTime: this.state.NotificationDateTime.format('YYYY/MM/DD HH:mm:ss'),
         NotificationMessage: this.state.NotificationMessage,
@@ -68,7 +69,7 @@ class Notification extends Component {
   }
 
   componentDidMount(){
-    axios.post('http://localhost:3003/getNotifications', {
+    axios.post(`http://${config.server}:${config.port}/getNotifications`, {
       jobId: this.props.jobId,
     }).then((res) => {
       this.setState({notifications: res.data});

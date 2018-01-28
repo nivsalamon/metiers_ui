@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import config from '../../../../../../../config'
 
 class ActivityLogTable extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class ActivityLogTable extends React.Component {
 
   componentWillMount() {
     const context = this;
-    axios.post('http://localhost:3003/historyLog', {
+    axios.post(`http://${config.server}:${config.port}/historyLog`, {
       job_id: this.props.job_id
     }).then(function(response) {
       context.props.addActivityLog(response.data);

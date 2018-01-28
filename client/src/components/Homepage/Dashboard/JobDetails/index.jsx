@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../../../../../../config';
 import axios from 'axios';
 import { NavLink, Link, Switch, Route, Redirect } from 'react-router-dom';
 import Ripple from '../../Search/Ripple.svg';
@@ -24,7 +25,7 @@ class JobDetail extends Component {
       this.setState({
         toggle: true,
       });
-      axios.post('http://localhost:3003/jobDetail', {
+      axios.post(`http://${config.server}:${config.port}/jobDetail`, {
         jobId: context.props.jobDetails.id
       }).then((res) => {
         context.props.jobDetailsAction(res.data[0]);
@@ -44,7 +45,7 @@ class JobDetail extends Component {
       this.setState({
         toggle: true,
       });
-      axios.post('http://localhost:3003/jobDetail', {
+      axios.post(`http://${config.server}:${config.port}/jobDetail`, {
         jobId: context.props.jobDetails.id
       }).then((res) => {
         context.props.jobDetailsAction(res.data[0]);

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import config from '../../../../../config'
 import Navigation from '../../Navigation/Navigation';
 import { Switch, Route, Link, NavLink, Redirect } from 'react-router-dom';
 import WillApply from '../../../containers/willApplyContainer';
@@ -27,9 +28,8 @@ class Home extends React.Component {
   } 
 
   componentWillMount() {
-    // auth.refresh();
     var context = this;
-    axios.post(`http://localhost:3003/dashboard`, {
+    axios.post(`http://${config.server}:${config.port}/dashboard`, {
       id: this.props.auth.user.id,
     }).then((res) => {
       if (res.data.length === 0) {

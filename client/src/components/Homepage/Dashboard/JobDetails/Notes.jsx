@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import config from '../../../../../../config';
 import axios from 'axios';
+
 
 class Notes extends Component {
   constructor(props) {
@@ -25,11 +27,11 @@ class Notes extends Component {
   handleSubmit() {
     const context = this;
 
-    axios.post('http://localhost:3003/editNotes', {
+    axios.post(`http://${config.server}:${config.port}/editNotes`, {
       jobId: this.state.jobId,
       jobNotes: this.state.jobNotes
     }).then(() => {
-      axios.post('http://localhost:3003/jobDetail', {
+      axios.post(`http://${config.server}:${config.port}/jobDetail`, {
         jobId: context.state.jobId
       }).then((res) => {
         context.props.jobDetailsAction(res.data[0]);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
+import config from '../../../../../../../config';
 import moment from 'moment';
 import axios from 'axios';
 import ActivityLogTable from '../../../../../containers/JobDetails/activityLogTableContainer';
@@ -57,9 +58,9 @@ class ActivityLog extends Component {
       type: this.state.option,
       timeStamp: this.state.date._d,
     }
-    axios.post('http://localhost:3003/addHistory', data
+    axios.post(`http://${config.server}:${config.port}/addHistory`, data
     ).then(function(response) {
-      axios.post('http://localhost:3003/historyLog', {
+      axios.post(`http://${config.server}:${config.port}/historyLog`, {
         job_id: context.props.jobDetailsAdditional.job_id
       }).then(function(response) {
         context.props.addActivityLog(response.data);
