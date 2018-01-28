@@ -97,7 +97,6 @@ class EditInfo extends Component {
       axios.post(`http://${config.server}:${config.port}/dashboard`, {
         id: context.props.auth.user.id,
       }).then((res) => {
-        console.log('this is res.data', res.data)
         if (res.data.length === 0) {
           context.props.dashboardAction([]);
         } else {

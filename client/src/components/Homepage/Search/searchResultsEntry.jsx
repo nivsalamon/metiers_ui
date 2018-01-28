@@ -26,7 +26,6 @@ class SearchResultsEntry extends React.Component {
   }
 
   saveOrDeleteJob() {
-    console.log('this is job', this.props.job)
     if (this.props.job.checkbox === 0) {
       this.props.saveOrDeleteJob(this.props.job, true, 1);
       this.setState({

@@ -13,3 +13,6 @@ bundle.js
 
 # log
 npm-debug.log*
+
+# config.js
+config.js
