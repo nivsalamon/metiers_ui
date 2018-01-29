@@ -3,9 +3,9 @@ import axios from 'axios';
 import config from '../../../../../config'
 import Navigation from '../../Navigation/Navigation';
 import { Switch, Route, Link, NavLink, Redirect } from 'react-router-dom';
-import WillApply from '../../../containers/willApplyContainer';
+import WillApply from '../../../containers/willapplyContainer';
 import Applied from '../../../containers/appliedContainer';
-import FollowUp from '../../../containers/followUpContainer';
+import FollowUp from '../../../containers/followupContainer';
 import dashboardContainer from '../../../containers/dashboardContainer';
 import Cards from '../../../containers/cardsContainer';
 import Manual from '../../../containers/manualContainer';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import EditJobNotes from '../../components/HomePage/DashBoard/JobDetails/Notes';
+import EditJobNotes from '../../components/Homepage/Dashboard/JobDetails/Notes';
 import jobDetailsAction from '../../actions/jobDetailsAdditional';
 
 function mapStateToProps(state) {
